@@ -1,0 +1,458 @@
+*,
+*:before,
+*:after {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+
+}
+
+html {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+body {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bandeau {
+  display: flex;
+  position: fixed;
+  background: rgb(16, 58, 18);
+  padding-bottom: 115px;
+  text-align: center;
+  top: 0px;
+  width: 100%;
+  height: 0px;
+
+  color: white;
+  /*border-radius: 0 0 10px 10px ;
+    box-shadow: 0px 0px 10px black;*/
+  z-index: 5000;
+}
+
+/*
+.buttonFiles {
+    width: 5em;
+    display: block;
+    margin: 20px 0px 0 0px;
+    outline: none;
+    border: 0;
+    height: 5em;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    z-index: 200;
+    position: absolute;
+    left:2%
+
+}
+
+.buttonFiles:hover {
+    vertical-align: middle;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgb(9, 143, 45);
+    background-color: hsl(123, 57%, 15%);
+    color:whitesmoke;   
+}
+*/
+.labelBandeau {
+  font-size: 2.0em;
+  font-weight: 80;
+  color: white;
+  display: block;
+  margin: 0 auto;
+  width: 95%;
+  position: relative;
+  top: 30px;
+}
+
+h1 {
+  width: 100%;
+  font-size: 2.0em;
+  font-weight: 80;
+  /*color: rgb(16, 58, 18);*/
+}
+
+h3 {
+  color: crimson;
+  cursor: grab;
+}
+
+img {
+  position: absolute;
+  width: 100px;
+  top: 10px;
+  right: 2%;
+
+}
+
+.boxForm {
+  top: 105px;
+  margin-top: 30px;
+  padding: 50px;
+  width: 90%;
+  height: fit-content;
+  position: relative;
+  background: #f8f9fa;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+
+
+::placeholder {
+  color: rgb(166, 166, 166);
+  font-size: 0.9em;
+}
+
+.titreInp,
+.auteurInp,
+select,
+textarea {
+  display: block;
+  margin: 20px auto;
+  outline: 0;
+  background: white;
+  width: 95%;
+  border: 0;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+
+.labelTitre,
+.labelSelect,
+.labelTxt,
+.labelZone,
+.labelQuestionTxt {
+  color: #5a6268;
+  display: block;
+  margin: 0 auto;
+  width: 95%;
+  position: relative;
+  top: 7px;
+}
+
+h3,
+.labelTitre,
+.labelZone {
+  text-transform: uppercase;
+}
+
+.labelQuestionTxt {
+  text-transform: none;
+}
+
+.flex2Inputs {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.flexInp {
+  margin: 20px auto;
+  outline: 0;
+  background: white;
+  width: 90%;
+  border: 0;
+  padding: 15px;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.flexLeftInp,
+.flexRightInp {
+  flex-basis: 45%;
+}
+
+.labelFlex {
+ color: #5a6268;
+  position: relative;
+  top: 8px;
+}
+.labelFlexTest {
+  color:purple;
+   position: relative;
+   top: 8px;
+ }
+ 
+button {
+  width: 4rem;
+  display: block;
+  margin: 0;
+  outline: none;
+  border: 0;
+  height: 4rem;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border-radius: 100%;
+  font-size: 1em;
+  background-color: #ccc;
+  padding: 0 5px 0 0;
+}
+
+
+
+.div-ask button {
+  display: inline-block;
+  width: 9rem;
+  height: 2rem;
+  font-size: 0.8em;
+  vertical-align: middle;
+  border-radius: 5px;
+  border-color: #cfeed1;
+  border: 2px;
+}
+
+.div-ask button:hover {
+  display: inline-block;
+  width: 10rem;
+  height: 2rem;
+  font-size: 0.8em;
+  vertical-align: middle;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgb(9, 143, 45);
+  background-color: hsl(123, 57%, 15%);
+  color: whitesmoke;
+
+}
+
+.div-ask p span {
+  display: inline-block;
+  padding: 10px;
+}
+
+/*
+.footer{
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: rgba(16, 58, 18,0.8); 
+  padding-left: 10%; 
+  width: 100%;
+  z-index: 5000;
+}
+  
+
+.footer p span {
+  display: inline-block;
+  padding: 2%;
+}
+
+.footer button {
+  display: inline-block;
+  width: 9rem;
+  height: 2rem;
+  font-size: 0.8em;
+  vertical-align: middle;
+  border-radius: 5px;
+  border-color: #cfeed1;
+  border: 2px;
+}
+
+.footer button:hover {
+  display: inline-block;
+  width: 10rem;
+  height: 2rem;
+  font-size: 0.8em;
+  vertical-align: middle;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgb(9, 143, 45);
+  background-color: hsl(124, 58%, 15%);
+  color: whitesmoke;
+}
+
+*/
+#remove_question:hover {
+  background-color: crimson;
+}
+
+#sous-titre {
+  display: inline-block;
+  color: white;
+}
+
+
+/*
+ 
+ */
+
+.labelMenu {
+  color: whitesmoke;
+  font-size: 1.0em;
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 35px;
+}
+
+.menuToggle {
+  display: block;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  z-index: 6000;
+  user-select: none;
+}
+
+.menuToggle a {
+  text-decoration: none;
+  color: whitesmoke;
+
+  transition: color 0.3s ease;
+}
+
+.menuToggle a:hover {
+  color: #76b998;
+}
+
+
+.menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+
+  cursor: pointer;
+
+  opacity: 0;
+  /* hide this */
+  z-index: 2;
+  /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
+}
+
+/*
+  * Just a quick hamburger
+  */
+.menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+
+  background: whitesmoke;
+  border-radius: 3px;
+
+  z-index: 1;
+
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+    background-color 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+    opacity 0.55s ease;
+
+}
+
+.menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+.menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+/* 
+  * Transform all the slices of hamburger
+  * into a crossmark.
+  */
+.menuToggle input:checked~span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: red;
+}
+
+/*
+  * But let's hide the middle one.
+  */
+.menuToggle input:checked~span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+  * Ohyeah and the last one should go the other direction
+  */
+.menuToggle input:checked~span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+  background-color: red;
+}
+
+/*
+  * Make this absolute positioned
+  * at the top left of the screen
+  */
+.menu {
+  position: absolute;
+  width: 10vr;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+
+  background: #143b28;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  border-radius: 0 0 5px 5px;
+  box-shadow: 5px 5px 5px #5a626844;
+  transform-origin: 0% 0%;
+  transform: translate(-110%, 0);
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+.menu li {
+
+  padding: 10px 0;
+  font-size: 1.0em;
+}
+
+/*
+  * And let's slide it in from the left
+  */
+.menuToggle input:checked~ul {
+  transform: none;
+}
+
+#scroll_to_top {
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  bottom: 50px;
+  right: 60px;
+}
+#scroll_to_top img {
+  width: 40px;
+  height: 40px;
+}
+
+.maskbutton {
+  width: 1rem;
+  display: block;
+  margin: 0;
+  outline: none;
+  border: 0;
+  height: 1rem;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border-radius: 100%;
+  font-size: 1em;
+  color:#eee;
+  background-color: #63879f;
+  padding: 0 0px 0 0; 
+}
