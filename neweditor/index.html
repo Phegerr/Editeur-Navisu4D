@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Scenario Editor</title>
+    <title>New Scenario Editor V08-0</title>
     <link rel="stylesheet" href="css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
     <div class="bandeau">
         <nav role="navigation">
             <div class="labelMenu">Fichiers</div>
@@ -50,33 +49,35 @@
         <img src="logoTVwhite.png" alt="logo tv">
     </div>
 
-
     <div class="boxForm">
         <div id="scenario">
 
             <!-- *************** Scénario infos *******************-->
             <div>
                 <hr>
-                <button id="hideScenario" class="maskbutton">></button>
-                <label for="titre" class="labelZone">SCÉNARIO</label><br>
+
+                <button id="hideScenario" class="hidebutton">></button>
+                <label for="titre" class="labelZone">SCÉNARIO</label>
+
+                <br>
                 <div id="scenar">
-                    <div class="flex2Inputs">
+                    <div class="flex_n_Inputs">
 
                         <div class="flexLeftInp">
                             <label for="titre" class="labelTxt">Titre</label>
-                            <input type="titre" name="titre" id="titre" class="titreInp" required maxlength="50"
+                            <input type="text" name="titre" id="titre" class="flexInp" required maxlength="50"
                                 placeholder="Entrez un titre pour votre scénario">
                         </div>
 
                         <div class="flexRightInp">
                             <label for="auteur" class="labelTxt">Auteur</label>
-                            <input type="titre" name="titre" id="titre" class="auteurInp" required maxlength="50">
+                            <input type="text" name="auteur" id="auteur" class="flexInp" required maxlength="50">
                         </div>
                     </div>
-                    <div class="flex2Inputs">
+                    <div class="flex_n_Inputs">
                         <div class="flexLeftInp">
                             <label for="date" class="labelTxt">Date de création</label>
-                            <input type="titre" name="titre" id="titre" class="auteurInp" required maxlength="20">
+                            <input type="titre" name="date" id="date" class="flexInp" required maxlength="20">
                         </div>
 
                         <div class="flexRightInp"><label for="txtArea" class="labelTxt">Descriptif</label>
@@ -90,13 +91,15 @@
             <!-- ************* Coordonnées zone ************************-->
             <div><br>
                 <hr>
-                <button id="hideZone" class="maskbutton">></button>
+                <div>
+                    <button id="hideZone" class="hidebutton">></button>
+                </div>
 
                 <label for="titre" class="labelZone">Coordonnées de la zone géographique de départ</label>
                 <br>
 
                 <div id="zone">
-                    <div class="flex2Inputs">
+                    <div class="flex_n_Inputs">
                         <div class="flexLeftInp">
                             <label for="latitude" class="labelFlex">Latitude sud</label>
                             <input type="text" name="latitude" id="latitude" required maxlength="35" class="flexInp"
@@ -109,7 +112,7 @@
                                 placeholder="Longitude ouest (en degrés décimaux)">
                         </div>
                     </div>
-                    <div class="flex2Inputs">
+                    <div class="flex_n_Inputs">
                         <div class="flexLeftInp">
                             <label for="latitude" class="labelFlex">Latitude nord</label>
                             <input type="text" name="latitude" id="latitude" required maxlength="35" class="flexInp"
@@ -124,19 +127,17 @@
                     </div>
                 </div>
             </div>
-
-
             <!-- ************** Initialisation caméra ***********************-->
 
             <div><br>
                 <hr>
-                <button id="hideCamera" class="maskbutton">></button>
+                <button id="hideCamera" class="hidebutton">></button>
 
                 <label for="titre" class="labelZone">Position initiale de la caméra</label>
                 <br>
 
                 <div id="cam">
-                    <div class="flex2Inputs">
+                    <div class="flex_n_Inputs">
 
                         <div class="flexLeftInp">
                             <label for="latitude" class="labelFlex">Latitude</label>
@@ -155,7 +156,7 @@
                                 placeholder="Altitude en mètres">
                         </div>
                     </div>
-                    <div class="flex2Inputs">
+                    <div class="flex_n_Inputs">
                         <div class="flexRightInp">
                             <label for="pitch" class="labelFlex">Roulis</label>
                             <input type="text" name="roulis" id="roulis" required maxlength="35" class="flexInp"
@@ -179,9 +180,9 @@
 
             <!-- **************** questions / étapes *******************-->
 
-            <div>
+            <div><br>
                 <hr>
-                <button id="hideEtapes" class="maskbutton">></button>
+                <button id="hideEtapes" class="hidebutton">></button>
                 <div class="div-ask">
                     <label for="titre" class="labelZone">ÉTAPES DU SCÉNARIO</label>
 
@@ -190,12 +191,12 @@
                 <div id="etapes">
                     <div id="questions">
                         <ol id="asks">
-                           
-                                <li id="etape">
-                                    <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label>
-                                    <textarea name="txt" id="txtArea" cols="10" rows="1"></textarea>
-                                </li>
-                          
+
+                            <li id="etapeInitiale">
+                                <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label>
+                                <textarea name="txt" id="txtArea" cols="10" rows="1"></textarea>
+                            </li>
+
                         </ol>
                     </div>
                     <div class="div-ask">
@@ -204,22 +205,26 @@
                         </div>
                         <p>
                             <button id="ajouter" onclick="addquestion()">Ajouter</button>
-                            <button id="insert_question">Insérer</button>
-                            <button id="remove_question">supprimer</button>
+                            <button id="insert"onclick="insertquestion()">Insérer</button>
+                            <button id="remove" onclick="removequestion()">supprimer</button>
                         </p>
                     </div>
 
 
 
                 </div><br>
-                <!-- **************** Ajout Documents **************************-->
+            </div>
+
+            <!-- **************** Ajout Documents **************************-->
+            <div><br>
                 <hr>
-                <button id="hideDocs" class="maskbutton">></button>
+
+                <button id="hideDocs" class="hidebutton">></button>
 
                 <label for="titre" class="labelZone">DOCUMENTS CONNEXES</label>
                 <br>
                 <div id="docs">
-                    <div class="flex2Inputs">
+                    <div class="flex_n_Inputs">
 
                         <div class="flexLeftInp">
                             <label for="images" class="labelFlex">Images</label>
@@ -237,19 +242,22 @@
                     </div>
 
                 </div>
-                <hr>
+            </div>
+            <hr>
 
-                <!-- ******************************************-->
-                <div id="scroll_to_top">
-                    <a href="#top"><img src="css/top.png" alt="Retourner en haut" /></a>
-                </div>
+            <!-- ******************************************-->
+            <div id="scroll_to_top">
+                <a href="#top"><img src="css/top.png" alt="Retourner en haut" /></a>
             </div>
         </div>
-
     </div>
 
-    <script src="/js/ajout.js"></script>
-    <script src="/js/toggle.js"></script>
+    <!--</div>-->
+
+    <script src="./js/ajout.js"></script>
+    <script src="./js/insert.js"></script>
+    <script src="./js/hide.js"></script>
+    <!--<script src="./js/swip.js"></script>-->
 
 
 </body>
