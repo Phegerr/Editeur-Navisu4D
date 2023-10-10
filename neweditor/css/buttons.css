@@ -1,0 +1,88 @@
+button {
+    appearance: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+
+.div-ask button {
+    display: inline-block;
+    width: 9rem;
+    height: 2rem;
+    font-size: 0.8em;
+    vertical-align: middle;
+    border-radius: 5px;
+    border-color: #cfeed1;
+    border: 2px;
+    transform: rotate(0deg);
+}
+
+.div-ask button:hover {
+    display: inline-block;
+    width: 10rem;
+    height: 2rem;
+    font-size: 0.8em;
+    vertical-align: middle;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgb(9, 143, 45);
+    background-color: hsl(123, 57%, 15%);
+    color: whitesmoke;
+    transform: rotate(0deg);
+}
+
+.div-ask p span {
+    display: inline-block;
+    padding: 10px;
+}
+
+
+
+#insert:hover {
+    background-color: chocolate;
+    box-shadow: 0 0 3px chocolate;
+}
+
+#remove:hover {
+    background-color: crimson;
+    box-shadow: 0 0 3px crimson;
+}
+
+
+#hideScenario::before,
+#hideZone::before,
+#hideCamera::before,
+#hideEtapes::before,
+#hideDocs::before {
+    display: block;
+    content: "\25B3";
+    margin: 0;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    border-radius: 100%;
+    font-size: 2em;
+    color: #143b28;
+    padding: 0 0 0 0;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    text-shadow: 1px 1px 3px gray;
+
+}
+
+/*------- haut de page-----------------*/
+
+#scroll_to_top {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    bottom: 50px;
+    right: 60px;
+}
+
+#scroll_to_top img {
+    width: 40px;
+    height: 40px;
+}

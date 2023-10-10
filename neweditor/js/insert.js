@@ -1,7 +1,7 @@
 
-let insertQuestion ='<li> <label for="txtArea" class="labelQuestionTxtTest">Commentaire & commandes</label>  <textarea name="txt" id="txtArea" cols="10" rows="1"></textarea></li>';
 
 function insertquestion() {
-    
-    document.getElementById("textArea").insertAdjacentHTML('afterbegin', insertQuestion);
+    let insertQuestion ='<li id="textArea" > <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label><textarea name="txt" cols="10" rows="1"></textarea></li>';
+ 
+    document.getElementById("etapeInitiale").insertAdjacentHTML('afterend', insertQuestion);
 }

@@ -1,17 +1,20 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Scenario Editor V08-0</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>New Scenario Editor V10-0</title>
 
+<!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 
@@ -56,7 +59,7 @@
             <div>
                 <hr>
 
-                <button id="hideScenario" class="hidebutton">></button>
+                <button id="hideScenario"></button>
                 <label for="titre" class="labelZone">SCÉNARIO</label>
 
                 <br>
@@ -74,6 +77,7 @@
                             <input type="text" name="auteur" id="auteur" class="flexInp" required maxlength="50">
                         </div>
                     </div>
+
                     <div class="flex_n_Inputs">
                         <div class="flexLeftInp">
                             <label for="date" class="labelTxt">Date de création</label>
@@ -92,7 +96,7 @@
             <div><br>
                 <hr>
                 <div>
-                    <button id="hideZone" class="hidebutton">></button>
+                    <button id="hideZone"></button>
                 </div>
 
                 <label for="titre" class="labelZone">Coordonnées de la zone géographique de départ</label>
@@ -131,7 +135,7 @@
 
             <div><br>
                 <hr>
-                <button id="hideCamera" class="hidebutton">></button>
+                <button id="hideCamera"></button>
 
                 <label for="titre" class="labelZone">Position initiale de la caméra</label>
                 <br>
@@ -182,7 +186,7 @@
 
             <div><br>
                 <hr>
-                <button id="hideEtapes" class="hidebutton">></button>
+                <button id="hideEtapes"></button>
                 <div class="div-ask">
                     <label for="titre" class="labelZone">ÉTAPES DU SCÉNARIO</label>
 
@@ -205,7 +209,7 @@
                         </div>
                         <p>
                             <button id="ajouter" onclick="addquestion()">Ajouter</button>
-                            <button id="insert"onclick="insertquestion()">Insérer</button>
+                            <button id="insert" onclick="insertquestion()">Insérer</button>
                             <button id="remove" onclick="removequestion()">supprimer</button>
                         </p>
                     </div>
@@ -219,7 +223,7 @@
             <div><br>
                 <hr>
 
-                <button id="hideDocs" class="hidebutton">></button>
+                <button id="hideDocs"></button>
 
                 <label for="titre" class="labelZone">DOCUMENTS CONNEXES</label>
                 <br>
@@ -254,10 +258,9 @@
 
     <!--</div>-->
 
-    <script src="./js/ajout.js"></script>
-    <script src="./js/insert.js"></script>
+    <script src="./js/questionsBtn.js"></script>
     <script src="./js/hide.js"></script>
-    <!--<script src="./js/swip.js"></script>-->
+    
 
 
 </body>
