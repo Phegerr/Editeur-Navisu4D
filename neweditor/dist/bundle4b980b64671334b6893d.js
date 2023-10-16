@@ -68,6 +68,19 @@ hdocs.addEventListener("click", function () {
 
 /***/ }),
 
+/***/ "./src/js/insert.js":
+/*!**************************!*\
+  !*** ./src/js/insert.js ***!
+  \**************************/
+/***/ (() => {
+
+function insertquestion() {
+  var insertQuestion = '<li id="textArea" > <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label><textarea name="txt" cols="10" rows="1"></textarea></li>';
+  document.getElementById("etapeInitiale").insertAdjacentHTML('afterend', insertQuestion);
+}
+
+/***/ }),
+
 /***/ "./src/js/questionsBtn.js":
 /*!********************************!*\
   !*** ./src/js/questionsBtn.js ***!
@@ -105,6 +118,77 @@ function removequestion() {
       element.remove(); 
   */
 }
+
+window.addquestion = addquestion;
+window.addquestion = insertquestion;
+window.addquestion = removequestion;
+
+/***/ }),
+
+/***/ "./src/js/swip.js":
+/*!************************!*\
+  !*** ./src/js/swip.js ***!
+  \************************/
+/***/ (() => {
+
+function removequestion() {
+  var element = document.getElementById("textArea6");
+  element.remove();
+}
+
+/***/ }),
+
+/***/ "./src/js/toggle.js":
+/*!**************************!*\
+  !*** ./src/js/toggle.js ***!
+  \**************************/
+/***/ (() => {
+
+var hscenar = document.getElementById("hideScenario");
+var scenar = document.getElementById("scenar");
+var hzone = document.getElementById("hideZone");
+var zone = document.getElementById("zone");
+var hcam = document.getElementById("hideCamera");
+var cam = document.getElementById("cam");
+var hetapes = document.getElementById("hideEtapes");
+var etapes = document.getElementById("etapes");
+var hdocs = document.getElementById("hideDocs");
+var docs = document.getElementById("docs");
+hscenar.addEventListener("click", function () {
+  if (getComputedStyle(scenar).display != "none") {
+    scenar.style.display = "none";
+  } else {
+    scenar.style.display = "block";
+  }
+});
+hzone.addEventListener("click", function () {
+  if (getComputedStyle(zone).display != "none") {
+    zone.style.display = "none";
+  } else {
+    zone.style.display = "block";
+  }
+});
+hcam.addEventListener("click", function () {
+  if (getComputedStyle(cam).display != "none") {
+    cam.style.display = "none";
+  } else {
+    cam.style.display = "block";
+  }
+});
+hetapes.addEventListener("click", function () {
+  if (getComputedStyle(etapes).display != "none") {
+    etapes.style.display = "none";
+  } else {
+    etapes.style.display = "block";
+  }
+});
+hdocs.addEventListener("click", function () {
+  if (getComputedStyle(docs).display != "none") {
+    docs.style.display = "none";
+  } else {
+    docs.style.display = "block";
+  }
+});
 
 /***/ }),
 
@@ -1174,6 +1258,42 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/js sync recursive \\.js$":
+/*!****************************!*\
+  !*** ./src/js/ sync \.js$ ***!
+  \****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./hide.js": "./src/js/hide.js",
+	"./insert.js": "./src/js/insert.js",
+	"./questionsBtn.js": "./src/js/questionsBtn.js",
+	"./swip.js": "./src/js/swip.js",
+	"./toggle.js": "./src/js/toggle.js"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./src/js sync recursive \\.js$";
+
+/***/ }),
+
 /***/ "./src/styles sync recursive \\.css$":
 /*!*********************************!*\
   !*** ./src/styles/ sync \.css$ ***!
@@ -1306,9 +1426,9 @@ function requireAll(r) {
 requireAll(__webpack_require__("./src/styles sync recursive \\.css$"));
 
 //import js
-//requireAll(require.context('./js/', true, /\.js$/));
+requireAll(__webpack_require__("./src/js sync recursive \\.js$"));
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle43ca5d8900b474198f07.js.map
+//# sourceMappingURL=bundle4b980b64671334b6893d.js.map

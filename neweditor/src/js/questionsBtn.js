@@ -2,7 +2,7 @@
 var ind;
 
 
-export function addquestion() {
+function addquestion() {
       /*
             let index = 6;
             let ind = index.toString();
@@ -10,18 +10,18 @@ export function addquestion() {
             document.getElementById("asks").insertAdjacentHTML("beforeend", newquestion)
             */
       let newquestion = '<li id="textArea" > <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label><textarea name="txt" cols="10" rows="1"></textarea></li>';
-      document.getElementById("asks").insertAdjacentHTML("beforeend", newquestion)
+      document.getElementById("asks").insertAdjacentHTML("beforeend", newquestion);
 
 }
 
 
-export function insertquestion() {
+function insertquestion() {
       let insertQuestion = '<li id="textArea" > <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label><textarea name="txt" cols="10" rows="1"></textarea></li>';
       document.getElementById("textArea").insertAdjacentHTML('afterend', insertQuestion);
 }
 
 
-export function removequestion() {
+function removequestion() {
 
       const element = document.getElementById("textArea");
       element.remove();
@@ -32,5 +32,8 @@ export function removequestion() {
       */
 }
 
+window.addquestion = addquestion;
+window.insertquestion = insertquestion;
+window.removequestion = removequestion;
 
 
