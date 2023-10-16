@@ -6,16 +6,16 @@
 import './js/questionsBtn.js';
 import './js/hide.js';
 import logoTVWhite from './assets/logoTVWhite.png';
-const logoTV = document.getElementById('logoTV');
-logoTV.src = logoTVWhite;
+//const logoTV = document.getElementById('logoTV');
+//logoTV.src = logoTVWhite;
 
 // import scrolltop from './assets/scrolltop.png';
 // const scrollTop = document.getElementById('logoTV');
 // scrollTop.src = scrolltop;
 
 import top from './assets/top.png';
-const Top = document.getElementById('top');
-Top.src = top;
+//const Top = document.getElementById('top');
+//Top.src = top;
 //import styles
 function requireAll(r) { r.keys().forEach(r); }
 requireAll(require.context('./styles/', true, /\.css$/));

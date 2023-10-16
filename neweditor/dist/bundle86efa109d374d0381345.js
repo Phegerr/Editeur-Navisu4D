@@ -68,32 +68,12 @@ hdocs.addEventListener("click", function () {
 
 /***/ }),
 
-/***/ "./src/js/insert.js":
-/*!**************************!*\
-  !*** ./src/js/insert.js ***!
-  \**************************/
-/***/ (() => {
-
-function insertquestion() {
-  var insertQuestion = '<li id="textArea" > <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label><textarea name="txt" cols="10" rows="1"></textarea></li>';
-  document.getElementById("etapeInitiale").insertAdjacentHTML('afterend', insertQuestion);
-}
-
-/***/ }),
-
 /***/ "./src/js/questionsBtn.js":
 /*!********************************!*\
   !*** ./src/js/questionsBtn.js ***!
   \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   addquestion: () => (/* binding */ addquestion),
-/* harmony export */   insertquestion: () => (/* binding */ insertquestion),
-/* harmony export */   removequestion: () => (/* binding */ removequestion)
-/* harmony export */ });
 var ind;
 function addquestion() {
   /*
@@ -120,75 +100,8 @@ function removequestion() {
 }
 
 window.addquestion = addquestion;
-window.addquestion = insertquestion;
-window.addquestion = removequestion;
-
-/***/ }),
-
-/***/ "./src/js/swip.js":
-/*!************************!*\
-  !*** ./src/js/swip.js ***!
-  \************************/
-/***/ (() => {
-
-function removequestion() {
-  var element = document.getElementById("textArea6");
-  element.remove();
-}
-
-/***/ }),
-
-/***/ "./src/js/toggle.js":
-/*!**************************!*\
-  !*** ./src/js/toggle.js ***!
-  \**************************/
-/***/ (() => {
-
-var hscenar = document.getElementById("hideScenario");
-var scenar = document.getElementById("scenar");
-var hzone = document.getElementById("hideZone");
-var zone = document.getElementById("zone");
-var hcam = document.getElementById("hideCamera");
-var cam = document.getElementById("cam");
-var hetapes = document.getElementById("hideEtapes");
-var etapes = document.getElementById("etapes");
-var hdocs = document.getElementById("hideDocs");
-var docs = document.getElementById("docs");
-hscenar.addEventListener("click", function () {
-  if (getComputedStyle(scenar).display != "none") {
-    scenar.style.display = "none";
-  } else {
-    scenar.style.display = "block";
-  }
-});
-hzone.addEventListener("click", function () {
-  if (getComputedStyle(zone).display != "none") {
-    zone.style.display = "none";
-  } else {
-    zone.style.display = "block";
-  }
-});
-hcam.addEventListener("click", function () {
-  if (getComputedStyle(cam).display != "none") {
-    cam.style.display = "none";
-  } else {
-    cam.style.display = "block";
-  }
-});
-hetapes.addEventListener("click", function () {
-  if (getComputedStyle(etapes).display != "none") {
-    etapes.style.display = "none";
-  } else {
-    etapes.style.display = "block";
-  }
-});
-hdocs.addEventListener("click", function () {
-  if (getComputedStyle(docs).display != "none") {
-    docs.style.display = "none";
-  } else {
-    docs.style.display = "block";
-  }
-});
+window.insertquestion = insertquestion;
+window.removequestion = removequestion;
 
 /***/ }),
 
@@ -1258,42 +1171,6 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/js sync recursive \\.js$":
-/*!****************************!*\
-  !*** ./src/js/ sync \.js$ ***!
-  \****************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var map = {
-	"./hide.js": "./src/js/hide.js",
-	"./insert.js": "./src/js/insert.js",
-	"./questionsBtn.js": "./src/js/questionsBtn.js",
-	"./swip.js": "./src/js/swip.js",
-	"./toggle.js": "./src/js/toggle.js"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./src/js sync recursive \\.js$";
-
-/***/ }),
-
 /***/ "./src/styles sync recursive \\.css$":
 /*!*********************************!*\
   !*** ./src/styles/ sync \.css$ ***!
@@ -1325,6 +1202,28 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = "./src/styles sync recursive \\.css$";
+
+/***/ }),
+
+/***/ "./src/assets/logoTVWhite.png":
+/*!************************************!*\
+  !*** ./src/assets/logoTVWhite.png ***!
+  \************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "logoTVWhite.png";
+
+/***/ }),
+
+/***/ "./src/assets/top.png":
+/*!****************************!*\
+  !*** ./src/assets/top.png ***!
+  \****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "top.png";
 
 /***/ })
 
@@ -1379,6 +1278,18 @@ webpackContext.id = "./src/styles sync recursive \\.css$";
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -1393,6 +1304,29 @@ webpackContext.id = "./src/styles sync recursive \\.css$";
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
@@ -1410,8 +1344,11 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_questionsBtn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/questionsBtn.js */ "./src/js/questionsBtn.js");
+/* harmony import */ var _js_questionsBtn_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_questionsBtn_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_hide_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/hide.js */ "./src/js/hide.js");
 /* harmony import */ var _js_hide_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_hide_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _assets_logoTVWhite_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/logoTVWhite.png */ "./src/assets/logoTVWhite.png");
+/* harmony import */ var _assets_top_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/top.png */ "./src/assets/top.png");
 //import generateJoke from './generateJoke'
 //import './styles/buttons.css'
 //import './styles/menuFichiers.css'
@@ -1419,6 +1356,17 @@ __webpack_require__.r(__webpack_exports__);
 //import insaneLogo from './assets/logo_assoc.png'
 
 
+
+//const logoTV = document.getElementById('logoTV');
+//logoTV.src = logoTVWhite;
+
+// import scrolltop from './assets/scrolltop.png';
+// const scrollTop = document.getElementById('logoTV');
+// scrollTop.src = scrolltop;
+
+
+//const Top = document.getElementById('top');
+//Top.src = top;
 //import styles
 function requireAll(r) {
   r.keys().forEach(r);
@@ -1426,9 +1374,12 @@ function requireAll(r) {
 requireAll(__webpack_require__("./src/styles sync recursive \\.css$"));
 
 //import js
-requireAll(__webpack_require__("./src/js sync recursive \\.js$"));
+//requireAll(require.context('./js/', true, /\.js$/));
+
+//import images
+//requireAll(require.context('./assets/', true, /\.png$/));
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle4b980b64671334b6893d.js.map
+//# sourceMappingURL=bundle86efa109d374d0381345.js.map
