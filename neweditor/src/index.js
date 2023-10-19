@@ -5,7 +5,7 @@
 //import insaneLogo from './assets/logo_assoc.png'
 import './js/questionsBtn.js';
 import './js/hide.js';
-import logoTVWhite from './assets/logoTVWhite.png';
+import logoTVwhite from './assets/logoTVwhite.png';
 //const logoTV = document.getElementById('logoTV');
 //logoTV.src = logoTVWhite;
 

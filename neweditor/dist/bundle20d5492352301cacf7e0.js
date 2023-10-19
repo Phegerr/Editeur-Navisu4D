@@ -1205,14 +1205,14 @@ webpackContext.id = "./src/styles sync recursive \\.css$";
 
 /***/ }),
 
-/***/ "./src/assets/logoTVWhite.png":
+/***/ "./src/assets/logoTVwhite.png":
 /*!************************************!*\
-  !*** ./src/assets/logoTVWhite.png ***!
+  !*** ./src/assets/logoTVwhite.png ***!
   \************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "logoTVWhite.png";
+module.exports = __webpack_require__.p + "logoTVwhite.png";
 
 /***/ }),
 
@@ -1347,7 +1347,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_questionsBtn_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_questionsBtn_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_hide_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/hide.js */ "./src/js/hide.js");
 /* harmony import */ var _js_hide_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_hide_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _assets_logoTVWhite_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/logoTVWhite.png */ "./src/assets/logoTVWhite.png");
+/* harmony import */ var _assets_logoTVwhite_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/logoTVwhite.png */ "./src/assets/logoTVwhite.png");
 /* harmony import */ var _assets_top_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/top.png */ "./src/assets/top.png");
 //import generateJoke from './generateJoke'
 //import './styles/buttons.css'
@@ -1382,4 +1382,4 @@ requireAll(__webpack_require__("./src/styles sync recursive \\.css$"));
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle2185de657f4b62eafda3.js.map
+//# sourceMappingURL=bundle20d5492352301cacf7e0.js.map
