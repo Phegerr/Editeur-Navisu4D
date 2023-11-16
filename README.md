@@ -9,4 +9,4 @@ Si vous avez le message d'erreur suivant : User
 
 sh: 1: webpack: Permission denied 
 
-Vous pourrez régler ce problème en exécutant la commande chmod +x webpack depuis un terminal dans le dossier neweditor
+Vous pourrez le régler en exécutant la commande chmod +x webpack depuis un terminal dans le dossier neweditor
