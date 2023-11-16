@@ -124,10 +124,22 @@ save.addEventListener("click", function () {
   var dateInput = document.getElementById("date").value;
   var titreValue = titreInput.value;
   var requestData = {
+    fileName: 'iheb2.txt',
     title: titreValue,
-    auteur: auteurInput,
-    date: dateInput
+    description: 'Example Description',
+    origin: 'Example Origin',
+    date: dateInput,
+    bbox: 'Example Bbox',
+    introduction: 'Example Introduction',
+    questions: ['Question 1', 'Question 2']
+    // ... other properties
   };
+  //   { title: titreValue,
+  //   auteur: auteurInput,
+  //   date:dateInput,
+
+  //   };
+
   axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost:8080/scenarios', requestData, {
     headers: {
       'Content-Type': 'application/json'
@@ -5566,4 +5578,4 @@ requireAll(__webpack_require__("./src/styles sync recursive \\.css$"));
 
 /******/ })()
 ;
-//# sourceMappingURL=bundled316931aee1ed1bb030b.js.map
+//# sourceMappingURL=bundle61cbadd51b743e207dbf.js.map
