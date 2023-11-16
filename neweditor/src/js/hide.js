@@ -1,7 +1,5 @@
-console.log("eheheheheheh");
 let hscenar = document.getElementById("hideScenario");
 let scenar = document.getElementById("scenar");
-
 let hzone = document.getElementById("hideZone");
 let zone = document.getElementById("zone");
 let hcam = document.getElementById("hideCamera");
@@ -10,7 +8,7 @@ let hetapes = document.getElementById("hideEtapes");
 let etapes = document.getElementById("etapes");
 let hdocs = document.getElementById("hideDocs");
 let docs = document.getElementById("docs");
-/*let hbutton = document.getElementById("hidebutton");*/
+
 
 hscenar.addEventListener("click", () => {
   if(getComputedStyle(scenar).display != "none"){
