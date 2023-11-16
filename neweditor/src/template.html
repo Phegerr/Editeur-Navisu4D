@@ -6,7 +6,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <script type="text/javascript">
+        function stopDefault(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
 
+        function dragOver(label, text) {
+            /* ADD ALMOST ANY STYLING YOU LIKE */
+            label.style.animationName = "dropbox";
+            label.innerText = text;
+        }
+
+        function dragLeave(label) {
+            /* THIS SHOULD REMOVE ALL STYLING BY dragOver() */
+            var len = label.style.length;
+            for (var i = 0; i < len; i++) {
+                label.style[label.style[i]] = "";
+            }
+            label.innerText = "Click to choose images or drag-n-drop them here";
+        }
+
+        function addFilesAndSubmit(event) {
+            var files = event.target.files || event.dataTransfer.files;
+            document.getElementById("images").value = files[0].name; // Set the value in the input field
+            submitFilesForm(document.getElementById("filesfrm"));
+        }
+
+        function submitFilesForm(form) {
+            var label = document.getElementById("fileslbl");
+            dragOver(label, "Uploading images..."); // set the drop zone text and styling
+            var fd = new FormData();
+            for (var i = 0; i < form.filesfld.files.length; i++) {
+                var field = form.filesfld;
+                fd.append(field.name, field.files[i], field.files[i].name);
+            }
+            var progress = document.getElementById("progress");
+            var x = new XMLHttpRequest();
+            if (x.upload) {
+                x.upload.addEventListener("progress", function (event) {
+                    var percentage = parseInt(event.loaded / event.total * 100);
+                    progress.innerText = progress.style.width = percentage + "%";
+                });
+            }
+            x.onreadystatechange = function () {
+                if (x.readyState == 4) {
+                    progress.innerText = progress.style.width = "";
+                    form.filesfld.value = "";
+                    dragLeave(label); // this will reset the text and styling of the drop zone
+                    if (x.status == 200) {
+                        var images = JSON.parse(x.responseText);
+                        for (var i = 0; i < images.length; i++) {
+                            var img = document.createElement("img");
+                            img.src = images[i];
+                            document.body.appendChild(img);
+                        }
+                    } else {
+                        // failed - TODO: Add code to handle server errors
+                    }
+                }
+            };
+            x.open("post", form.action, true);
+            x.send(fd);
+            return false;
+        }
+    </script>
 <!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +112,7 @@
             </div>
         </nav>
         <div class="labelBandeau">Éditeur de scénarios</div>
-        <img src="logoTVWhite.png" alt="logo tv">
+        <img src="logoTVwhite.png" alt="logo tv">
     </div>
 
     <div class="boxForm">
@@ -208,7 +272,7 @@
                         </div>
                         <p>
                             <button id="ajouter" onclick="addquestion()">Ajouter</button>
-                            <button id="insert" onclick="insertquestion()">Insérer</button>
+                            <!-- <button id="insert" onclick="insertquestion()">Insérer</button> -->
                             <button id="remove" onclick="removequestion()">supprimer</button>
                         </p>
                     </div>
@@ -229,19 +293,39 @@
                 <div id="docs">
                     <div class="flex_n_Inputs">
 
-                        <div class="flexLeftInp">
+                        <!-- <div class="flexLeftInp">
                             <label for="images" class="labelFlex">Images</label>
                             <input type="text" name="images" id="images" required maxlength="35" class="flexInp">
+                        </div> -->
+                        <div class="flexImgInp">
+                            <label for="images" class="labelFlex">Images</label>
+                            <div id="dropArea"
+                                ondragover="stopDefault(event);dragOver(this, 'Déposez les images pour les téléverser.');"
+                                ondragenter="stopDefault(event);dragOver(this, 'Déposez les images pour les téléverser.');"
+                                ondragleave="stopDefault(event);dragLeave(this);"
+                                ondrop="stopDefault(event);dragLeave(this);addFilesAndSubmit(event);">
+                                <label for="filesfld" id="fileslbl">Cliquez pour choisir des images ou faites-les glisser ici</label>
+                                <input type="file" name="filesfld" id="filesfld" accept="image/*" onchange="addFilesAndSubmit(event);" multiple
+                                    style="display: none;" />
+                            </div>
+                        </div>
+                    
+                        <form id="filesfrm" action="/upload" method="post" onsubmit="return submitFilesForm(this);">
+                            <!-- Remove the label and input for filesfld from here -->
+                        </form>
+                    
+                        <div style="text-align: left;">
+                            <div id="progress"></div>
                         </div>
 
-                        <div class="flexRightInp">
+                        <!-- <div class="flexRightInp">
                             <label for="videos" class="labelFlex">Vidéos</label>
                             <input type="text" name="videos" id="videos" required maxlength="35" class="flexInp">
                         </div>
                         <div class="flexLeftInp">
                             <label for="modeles" class="labelFlex">Modèles 3D</label>
                             <input type="text" name="modeles" id="modeles" required maxlength="35" class="flexInp">
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
