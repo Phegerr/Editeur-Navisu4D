@@ -165,7 +165,28 @@ h3,
   color: white;
 }
 
+.flexImgInp {
+  margin-bottom: 20px;
+}
 
+#dropArea {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+#fileslbl {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#fileslbl,
+#progress {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
 
 /*-----------
 input[type=checkbox] {
