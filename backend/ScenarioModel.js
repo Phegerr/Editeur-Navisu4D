@@ -6,11 +6,9 @@ class ScenarioModel {
         this.fileName = datas.fileName;
         this.title = datas.title;
         this.description = datas.description;
-        this.origin = datas.origin;
         this.date = datas.date;
         this.bbox = datas.bbox;
-        this.introduction = datas.introduction;
-        this.questions = datas.questions ? datas.questions : [];
+        this.questions = datas.questions;
         this.imgIndex = 1;
         this.videoIndex = 1
         this.cmd = "scenario"

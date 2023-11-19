@@ -1,26 +1,39 @@
 import axios from 'axios';
 console.log("Hi");
 
-/*let hbutton = document.getElementById("hidebutton");*/
-const dataInput = document.getElementById('titre');
-const inputData = dataInput.value;
+
 let save = document.getElementById("saveButton");
 
 
 save.addEventListener("click", () => {
-  const titreInput = document.getElementById("titre");
+  const titreInput = document.getElementById("titre").value;
   const auteurInput = document.getElementById("auteur").value;
   const dateInput = document.getElementById("date").value;
-  const titreValue = titreInput.value;
+  const descriptifInput = document.getElementById("descriptifArea").value;
+  const longitudeInput = document.getElementById("longitude").value;
+  const latitudeInput = document.getElementById("latitude").value;
+  const altitudeInput = document.getElementById("altitude").value;
+  const tangageInput = document.getElementById("tangage").value;
+  const roulisInput = document.getElementById("roulis").value;
+  const lacetInput = document.getElementById("lacet").value;
+  const CommentaireAreaInput = document.getElementById("CommentaireArea").value;
+  const latitudesudInput = document.getElementById("latitudesud").value;
+  const latitudenordInput = document.getElementById("latitudenord").value;
+  const longitudeouestInput = document.getElementById("longitudeouest").value;
+  const longitudeestInput = document.getElementById("longitudeest").value;
+
   const requestData ={
-    fileName: 'iheb2.txt',
-    title: titreValue,
-    description: 'Example Description',
-    origin: 'Example Origin',
+    fileName: 'iheb3.txt',
+    title: titreInput,
+    description: descriptifInput,
     date: dateInput,
-    bbox: 'Example Bbox',
-    introduction: 'Example Introduction',
-    questions: ['Question 1', 'Question 2'],
+    bbox:{
+      latitudesud: latitudesudInput,
+      latitudenord: latitudenordInput,
+      longitudeouest: longitudeouestInput,
+      longitudeest: longitudeestInput
+    },
+    questions: CommentaireAreaInput,
     // ... other properties
   };
 //   { title: titreValue,

@@ -113,25 +113,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 
 console.log("Hi");
-
-/*let hbutton = document.getElementById("hidebutton");*/
-var dataInput = document.getElementById('titre');
-var inputData = dataInput.value;
 var save = document.getElementById("saveButton");
 save.addEventListener("click", function () {
-  var titreInput = document.getElementById("titre");
+  var titreInput = document.getElementById("titre").value;
   var auteurInput = document.getElementById("auteur").value;
   var dateInput = document.getElementById("date").value;
-  var titreValue = titreInput.value;
+  var descriptifInput = document.getElementById("descriptifArea").value;
+  var longitudeInput = document.getElementById("longitude").value;
+  var latitudeInput = document.getElementById("latitude").value;
+  var altitudeInput = document.getElementById("altitude").value;
+  var tangageInput = document.getElementById("tangage").value;
+  var roulisInput = document.getElementById("roulis").value;
+  var lacetInput = document.getElementById("lacet").value;
+  var CommentaireAreaInput = document.getElementById("CommentaireArea").value;
+  var latitudesudInput = document.getElementById("latitudesud").value;
+  var latitudenordInput = document.getElementById("latitudenord").value;
+  var longitudeouestInput = document.getElementById("longitudeouest").value;
+  var longitudeestInput = document.getElementById("longitudeest").value;
   var requestData = {
-    fileName: 'iheb2.txt',
+    fileName: 'iheb3.txt',
     title: titreValue,
-    description: 'Example Description',
-    origin: 'Example Origin',
+    description: descriptifInput,
     date: dateInput,
-    bbox: 'Example Bbox',
-    introduction: 'Example Introduction',
-    questions: ['Question 1', 'Question 2']
+    bbox: {
+      latitudesud: latitudesudInput,
+      latitudenord: latitudenordInput,
+      longitudeouest: longitudeouestInput,
+      longitudeest: longitudeestInput
+    },
+    questions: CommentaireAreaInput
     // ... other properties
   };
   //   { title: titreValue,
@@ -5599,4 +5609,4 @@ requireAll(__webpack_require__("./src/styles sync recursive \\.css$"));
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlea0935d4d39ee0b250419.js.map
+//# sourceMappingURL=bundledf5989a8cf5378ed3d78.js.map
