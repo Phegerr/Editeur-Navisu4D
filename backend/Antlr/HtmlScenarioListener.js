@@ -3,28 +3,30 @@ import ScenarioLexer from './scenarioLexer.js';
 import ScenarioParser from './scenarioParser.js';
 import ScenarioListener from './scenarioListener.js';
 export default class HtmlScenarioListener extends ScenarioListener {
-    constructor(res) {
+    constructor(res,scenario) {
         super();
         this.Res = res;
         this.mobile = {};
         this.vars = {};
         this.index = -1;
-        this.scenario = {
-            "title": "Visualisation de données océanographiques",
-            "description": "",
-            "origin": "Terre Virtuelle",
-            "date": {
-                "date :": "2023-03-03"
-            },
-            "cmd": "scenario",
-            "bbox": {
-                "s": 48.26,
-                "w": -4.56,
-                "n": 48.43,
-                "e": -4.3
-            },
-            "steps": []
-        };
+        // this.scenario = {
+        //     "title": "Visualisation de données océanographiques",
+        //     "description": "",
+        //     "origin": "Terre Virtuelle",
+        //     "date": {
+        //         "date :": "2023-03-03"
+        //     },
+        //     "cmd": "scenario",
+        //     "bbox": {
+        //         "s": 48.26,
+        //         "w": -4.56,
+        //         "n": 48.43,
+        //         "e": -4.3
+        //     },
+        //     "steps": []
+        // };
+        this.scenario=scenario;
+        this.scenario.steps=[];
     }
    
     exitScenario(ctx) {

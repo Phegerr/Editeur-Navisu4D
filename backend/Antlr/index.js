@@ -24,7 +24,7 @@ createServer((req, res) => {
     var tokens = new CommonTokenStream(lexer);
     var parser = new ScenarioParser(tokens);
     parser.removeErrorListeners(); // Retire les listeners d'erreur par défaut
-        parser.addErrorListener(new CustomErrorListener()); // Ajoute votre CustomErrorListener
+    parser.addErrorListener(new CustomErrorListener()); // Ajoute votre CustomErrorListener
     
     parser.buildParseTrees = true;
     var tree = parser.scenario();

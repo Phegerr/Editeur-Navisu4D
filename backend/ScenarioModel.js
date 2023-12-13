@@ -6,9 +6,10 @@ class ScenarioModel {
         this.fileName = datas.fileName;
         this.title = datas.title;
         this.description = datas.description;
+        this.origin = "Terre Virtuelle",
         this.date = datas.date;
         this.bbox = datas.bbox;
-        this.questions = datas.questions;
+        this.questions = datas.steps;
         this.imgIndex = 1;
         this.videoIndex = 1
         this.cmd = "scenario"
@@ -63,7 +64,7 @@ class ScenarioModel {
     save(fileName) {
         this.mainDirectoryName = '../ApiRestNaVisu4D/ApiRestNaVisu4D/data/scenarios/' + fileName;
         this.checkDirectory();
-        this.saveQuestions();
+        this.saveQuestions(); //probably useless now as i said in front of the question but not sure for img and video
         const jsonContent = JSON.stringify(this.getScenario());
         const fullPath = this.mainDirectoryName + '/' + fileName + '.json';
         fs.writeFileSync(fullPath, jsonContent, 'utf8');
@@ -77,6 +78,9 @@ class ScenarioModel {
             fs.mkdirSync(this.mainDirectoryName + '/videos');
         }
     }
+
+
+    //this function is now useless cuz there is no awnser. However it was doing smthing with img and video but i don't know what for
 
     saveQuestions() {
         this.questions = this.questions.map((question) => {

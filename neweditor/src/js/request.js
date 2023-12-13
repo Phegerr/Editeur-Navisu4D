@@ -43,15 +43,15 @@ save.addEventListener("click", () => {
 //  formData.append('image', imageFile);
 
   const requestData ={
-    fileName: 'iheb3.txt',
+    fileName: titreInput.replace(/ /g, ""), //removing space
     title: titreInput,
     description: descriptifInput,
     date: dateInput,
     bbox:{
-      latitudesud: latitudesudInput,
-      latitudenord: latitudenordInput,
-      longitudeouest: longitudeouestInput,
-      longitudeest: longitudeestInput
+      s: latitudesudInput,
+      w: longitudeouestInput,
+      n: latitudenordInput,
+      e: longitudeestInput
     },
     questions: questionsList,
     // ... other properties
@@ -68,7 +68,7 @@ axios.post('http://localhost:8080/scenarios', requestData, {
       .then(response => {
           // Gérer la réponse ici
           console.log("youpiiiii");
-          console.log(response.data);
+          console.log(response);
           return response.data;
       })
       .then(data => {
