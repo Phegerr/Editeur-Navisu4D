@@ -16,11 +16,31 @@ save.addEventListener("click", () => {
   const tangageInput = document.getElementById("tangage").value;
   const roulisInput = document.getElementById("roulis").value;
   const lacetInput = document.getElementById("lacet").value;
-  const CommentaireAreaInput = document.getElementById("CommentaireArea").value;
   const latitudesudInput = document.getElementById("latitudesud").value;
   const latitudenordInput = document.getElementById("latitudenord").value;
   const longitudeouestInput = document.getElementById("longitudeouest").value;
   const longitudeestInput = document.getElementById("longitudeest").value;
+  const questionInput = document.getElementsByName("commentaireArea");
+  
+ 
+  const questionsList = [];
+  for(let i=0; i<questionInput.length;i++){
+    questionsList.push(questionInput[i].value);
+  }
+  
+
+
+ // Assuming you have an input field with type=file for uploading an image
+//  const fileInput = document.getElementById("fileslbl");
+//  const imageFile = fileInput.files[0]; // Assuming you're only dealing with one file
+
+
+
+//  // Create a FormData object
+//  const formData = new FormData();
+
+ // Append the file to the FormData object
+//  formData.append('image', imageFile);
 
   const requestData ={
     fileName: 'iheb3.txt',
@@ -33,14 +53,11 @@ save.addEventListener("click", () => {
       longitudeouest: longitudeouestInput,
       longitudeest: longitudeestInput
     },
-    questions: CommentaireAreaInput,
+    questions: questionsList,
     // ... other properties
   };
-//   { title: titreValue,
-//   auteur: auteurInput,
-//   date:dateInput,
-
-//   };
+  // requestData.image = imageFile;
+  ;
 
 
 axios.post('http://localhost:8080/scenarios', requestData, {
