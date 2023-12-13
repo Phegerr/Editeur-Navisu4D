@@ -8,6 +8,9 @@ import './js/hide.js';
 //importation des requetes
 import './js/request.js';
 
+
+import './js/drag.js';
+
 import logoTVwhite from './assets/logoTVwhite.png';
 //const logoTV = document.getElementById('logoTV');
 //logoTV.src = logoTVWhite;
@@ -26,5 +29,3 @@ requireAll(require.context('./styles/', true, /\.css$/));
 //import js
 //requireAll(require.context('./js/', true, /\.js$/));
 
-//import images
-//requireAll(require.context('./assets/', true, /\.png$/));
