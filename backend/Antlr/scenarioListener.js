@@ -32,6 +32,114 @@ export default class scenarioListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by scenarioParser#simulation.
+	enterSimulation(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#simulation.
+	exitSimulation(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#json.
+	enterJson(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#json.
+	exitJson(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#meteo.
+	enterMeteo(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#meteo.
+	exitMeteo(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#image.
+	enterImage(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#image.
+	exitImage(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#text.
+	enterText(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#text.
+	exitText(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#image3D.
+	enterImage3D(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#image3D.
+	exitImage3D(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#audio.
+	enterAudio(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#audio.
+	exitAudio(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#video.
+	enterVideo(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#video.
+	exitVideo(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#speech.
+	enterSpeech(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#speech.
+	exitSpeech(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#video3D.
+	enterVideo3D(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#video3D.
+	exitVideo3D(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#fireworks.
+	enterFireworks(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#fireworks.
+	exitFireworks(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#vector.
+	enterVector(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#vector.
+	exitVector(ctx) {
+	}
+
+
 	// Enter a parse tree produced by scenarioParser#navigation.
 	enterNavigation(ctx) {
 	}
@@ -110,6 +218,42 @@ export default class scenarioListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by scenarioParser#bbox.
 	exitBbox(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#chart.
+	enterChart(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#chart.
+	exitChart(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#raster.
+	enterRaster(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#raster.
+	exitRaster(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#shom.
+	enterShom(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#shom.
+	exitShom(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#mbtiles.
+	enterMbtiles(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#mbtiles.
+	exitMbtiles(ctx) {
 	}
 
 
@@ -236,6 +380,15 @@ export default class scenarioListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by scenarioParser#litto3D.
 	exitLitto3D(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#bool.
+	enterBool(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#bool.
+	exitBool(ctx) {
 	}
 
 
