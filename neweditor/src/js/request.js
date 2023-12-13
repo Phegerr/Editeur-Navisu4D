@@ -30,17 +30,11 @@ save.addEventListener("click", () => {
   
 
 
- // Assuming you have an input field with type=file for uploading an image
-//  const fileInput = document.getElementById("fileslbl");
-//  const imageFile = fileInput.files[0]; // Assuming you're only dealing with one file
+ 
 
-
-
-//  // Create a FormData object
-//  const formData = new FormData();
-
- // Append the file to the FormData object
-//  formData.append('image', imageFile);
+const fileInput = document.getElementById("input-file");
+  const formData = new FormData();
+  formData.append('imageData', fileInput.files[0]);
 
   const requestData ={
     fileName: titreInput.replace(/ /g, ""), //removing space
@@ -54,10 +48,11 @@ save.addEventListener("click", () => {
       e: longitudeestInput
     },
     questions: questionsList,
-    // ... other properties
   };
-  // requestData.image = imageFile;
-  ;
+  requestData.imageData = formData;
+
+
+ 
 
 
 axios.post('http://localhost:8080/scenarios', requestData, {
