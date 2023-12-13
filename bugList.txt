@@ -1,0 +1,7 @@
+1-Si il n'y a pas de comment, dans l'etape n, alors les commandes de l'etape n seront placées juste après celle de l'étape n-1 et il n'y a pas d'étape n
+
+2-Actuellement, toujours questions dans le json et non steps.
+
+3-Le nom du fichier n'est d'autre que le titre sans les espaces
+
+4-Si un fichier existe déja, il est remplacé sans demander par l'ancien
