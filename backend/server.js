@@ -16,6 +16,7 @@ var bodyParser = require("body-parser");
 const fs = require('fs');
 const ScenarioModel = require('./ScenarioModel.js');
 const scenariosFolders = '../ApiRestNaVisu4D/ApiRestNaVisu4D/data/scenarios';
+const path = require('path');
 app.get('/', (req, res) => {
     res.send('hi!');
   });
@@ -37,9 +38,9 @@ router.route('/scenarios')
     .get(async function (req, res) {
         // need change here
         const scenariosData = fs.readdirSync(scenariosFolders).map(folder => {
-            // maybe a a filter is better
+            // maybe a filter is better
             const scenarioFiles = fs.readdirSync(scenariosFolders + '/' + folder).reduce((acumulator, subContent) => {
-                if (subContent.includes('.json')) {
+                if (path.extname(subContent) === '.json') {
                     const data = fs.readFileSync(scenariosFolders + '/' + folder + '/' + subContent)
                     const scenarioObj = new ScenarioModel(JSON.parse(data));
                     scenarioObj.formatForRes();
@@ -79,7 +80,7 @@ router.route('/scenarioFilesPath')
     .post((req, res) => {
         const main_directory_name = scenariosFolders + '/' + req.body.fileName;
         if (!fs.existsSync(main_directory_name)) {
-            return res.json('scenario don"t exist');
+            return res.json("scenario don't exist");
         }
         if (!fs.existsSync(main_directory_name + '/' + req.body.fileName + '.pdf')) {
             return res.json('scenario have no exports files');
@@ -105,7 +106,7 @@ router.route('/dlFile')
         if (fs.existsSync(path)) {
             return res.download(path)
         } else {
-            return res.json('scenario don"t exist');
+            return res.json("scenario don't exist");
         }
     })
 
