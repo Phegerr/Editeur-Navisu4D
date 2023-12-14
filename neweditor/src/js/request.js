@@ -70,12 +70,10 @@ axios.post('http://localhost:8080/scenarios', requestData, {
   })
       .then(response => {
           // Gérer la réponse ici
-          console.log("youpiiiii");
           console.log(response);
           return response.data;
       })
       .then(data => {
-          console.log(requestData);
           console.log('Response from the server:', data);
       })
       .catch(error => {

@@ -1,23 +1,11 @@
-//import generateJoke from './generateJoke'
-//import './styles/buttons.css'
-//import './styles/menuFichiers.css'
-//import './styles/style.css'
-//import insaneLogo from './assets/logo_assoc.png'
+
 import './js/questionsBtn.js';
 import './js/hide.js';
-//importation des requetes
 import './js/request.js';
-
-
+import './js/newScenario.js';
 import './js/drag.js';
 
 import logoTVwhite from './assets/logoTVwhite.png';
-//const logoTV = document.getElementById('logoTV');
-//logoTV.src = logoTVWhite;
-
-// import scrolltop from './assets/scrolltop.png';
-// const scrollTop = document.getElementById('logoTV');
-// scrollTop.src = scrolltop;
 
 import top from './assets/top.png';
 //const Top = document.getElementById('top');
