@@ -4,6 +4,7 @@ import './js/hide.js';
 import './js/request.js';
 import './js/newScenario.js';
 import './js/drag.js';
+import './js/defaultValue.js';
 
 import logoTVwhite from './assets/logoTVwhite.png';
 
