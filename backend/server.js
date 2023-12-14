@@ -55,9 +55,7 @@ router.route('/scenarios')
     })
     
     .post((req, res) => {
-        const dic= req.body
-        
-        
+        const dic= req.body  
         AntlrRes(res, dic)
         .then(result => {
             // Utilisez le résultat ici

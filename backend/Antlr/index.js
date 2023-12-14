@@ -18,6 +18,22 @@ createServer((req, res) => {
     });
     res.write('<html><head><meta charset="UTF-8"/></head><body>');
     try{
+    var scenario = {
+            "title": "Visualisation de données océanographiques",
+            "description": "",
+            "origin": "Terre Virtuelle",
+            "date": {
+                "date :": "2023-03-03"
+            },
+            "cmd": "scenario",
+            "bbox": {
+                "s": 48.26,
+                "w": -4.56,
+                "n": 48.43,
+                "e": -4.3
+            },
+            "steps": []
+        };
     var input = "blablabla*bbox,48.0,-5.0,49.0,2.0*move,flyTo,ship,-4.54,48.57,900000.0*layer,oceanography,currents,tidalAtlas,2D,max*navigation,pilotchart,NAC,3*chart,raster,7311*chart,mbtiles,manche*bbox,48.3,-5.2,48.65,-4.5*simulation,json,track_pizou_height.json,BelEspoirM.glb,true,waves.wav,6.0,true,false,0,0,255,0,240,meteo,arome*layer,bathymetry,emodnet*move,flyTo,camera,-4.54,48.57,90000,0.0,31.0,0.0*layer,bathymetry,litto3D,morbihan*move,flyTo,camera,-4.54,48.57,90000*video,https://www.google.com/search?q=ytb&rlz=1C1CHBF_frFR915FR915&oq=ytb&gs_lcrp=EgZjaHJvbWUqBwgAEAAYjwIyBwgAEAAYjwIyDQgBEC4YxwEY0QMYgAQyBggCEEUYQDIHCAMQABiABDIJCAQQABgKGIAEMgcIBRAAGIAEMgcIBhAAGIAEMg8IBxAAGAoYgwEYsQMYgATSAQc0MjZqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8,fnfa,50,50,50,50";
     var chars = new InputStream(input, true)
     var lexer = new ScenarioLexer(chars);
@@ -28,7 +44,7 @@ createServer((req, res) => {
     
     parser.buildParseTrees = true;
     var tree = parser.scenario();
-    var htmlScenario = new HtmlScenarioListener(res);
+    var htmlScenario = new HtmlScenarioListener(res,scenario);
     antlr4.tree.ParseTreeWalker.DEFAULT.walk(htmlScenario, tree);
     res.write('</body></html>');
     res.end();

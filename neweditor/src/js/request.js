@@ -48,6 +48,14 @@ const fileInput = document.getElementById("input-file");
       e: longitudeestInput
     },
     questions: questionsList,
+    camera: {
+      lon: longitudeInput,
+      lat: latitudeInput,
+      alt: altitudeInput,
+      tan: tangageInput,
+      rou: roulisInput,
+      lac: lacetInput,
+    },
   };
   requestData.imageData = formData;
 

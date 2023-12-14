@@ -16,8 +16,6 @@ export function giveRes(res,scenario) {
     try{
     
     var htmlScenario = new HtmlScenarioListener(res,scenario);
-    console.log("jfo");
-    console.log(scenario.questions.length);
     for (let i = 0; i < scenario.questions.length; i++) {
         var input = scenario.questions[i];
         //var input = "blablabla*bbox,48.0,-5.0,49.0,2.0*move,flyTo,ship,-4.54,48.57,900000.0*layer,oceanography,currents,tidalAtlas,2D,max*navigation,pilotchart,NAC,3";
