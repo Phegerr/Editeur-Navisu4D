@@ -9,10 +9,11 @@ class ScenarioModel {
         this.origin = "Terre Virtuelle",
         this.date = datas.date;
         this.bbox = datas.bbox;
-        this.questions = datas.steps;
+        this.steps = datas.steps;
         this.imgIndex = 1;
         this.videoIndex = 1
         this.cmd = "scenario"
+        this.commandes = datas.questions
     }
 
     getScenario() {
@@ -24,20 +25,20 @@ class ScenarioModel {
             date: this.date,
             bbox: this.bbox,
             introduction: this.introduction,
-            questions: this.questions,
+            steps: this.steps,
             cmd: this.cmd
         };
     }
 
-    formatForRes() {
-        this.questions = this.questions.map((question) => {
-            if (question.response) {
-                question.response.Images = this.formatImagesForRes(question.response.Images);
-                question.response.Videos = this.formatVideosForRes(question.response.Videos);
-            }
-            return question;
-        })
-    }
+    // formatForRes() {
+    //     this.questions = this.questions.map((question) => {
+    //         if (question.response) {
+    //             question.response.Images = this.formatImagesForRes(question.response.Images);
+    //             question.response.Videos = this.formatVideosForRes(question.response.Videos);
+    //         }
+    //         return question;
+    //     })
+    // }
 
     formatImagesForRes(imagesArray) {
         return imagesArray.map(image => {
@@ -64,7 +65,7 @@ class ScenarioModel {
     save(fileName) {
         this.mainDirectoryName = '../ApiRestNaVisu4D/ApiRestNaVisu4D/data/scenarios/' + fileName;
         this.checkDirectory();
-        this.saveQuestions(); //probably useless now as i said in front of the question but not sure for img and video
+        //this.saveQuestions(); //probably useless now as i said in front of the question but not sure for img and video
         const jsonContent = JSON.stringify(this.getScenario());
         const fullPath = this.mainDirectoryName + '/' + fileName + '.json';
         fs.writeFileSync(fullPath, jsonContent, 'utf8');
@@ -74,24 +75,22 @@ class ScenarioModel {
     checkDirectory() {
         if (!fs.existsSync(this.mainDirectoryName)) {
             fs.mkdirSync(this.mainDirectoryName, {recursive: true});
-            fs.mkdirSync(this.mainDirectoryName + '/images');
-            fs.mkdirSync(this.mainDirectoryName + '/videos');
         }
     }
 
 
     //this function is now useless cuz there is no awnser. However it was doing smthing with img and video but i don't know what for
 
-    saveQuestions() {
-        this.questions = this.questions.map((question) => {
-            if (question.response
-            ) {
-                question.response.Images = this.saveImages(question.response.Images);
-                question.response.Videos = this.saveVideos(question.response.Videos);
-            }
-            return question;
-        })
-    }
+    // saveQuestions() {
+    //     this.questions = this.questions.map((question) => {
+    //         if (question.response
+    //         ) {
+    //             question.response.Images = this.saveImages(question.response.Images);
+    //             question.response.Videos = this.saveVideos(question.response.Videos);
+    //         }
+    //         return question;
+    //     })
+    // }
 
     saveImages(imagesArray) {
         return imagesArray.map((image) => {
