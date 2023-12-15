@@ -1,12 +1,18 @@
 import axios from 'axios';
 console.log("Hi");
 
-
+const previousTitleInputColor=document.getElementById("titre").style.backgroundColor;
 let save = document.getElementById("saveButton");
 
 
 save.addEventListener("click", () => {
-  const titreInput = document.getElementById("titre").value;
+  var titreInputElement = document.getElementById("titre");
+  if (!titreInputElement.checkValidity()) {
+    alert('Veuillez renseigner un titre');
+    titreInputElement.style.backgroundColor = 'red'; // Fond rouge
+} else {
+  titreInputElement.style.backgroundColor = previousTitleInputColor;
+  const titreInput = titreInputElement.value;
   const auteurInput = document.getElementById("auteur").value;
   const dateInput = document.getElementById("date").value;
   const descriptifInput = document.getElementById("descriptifArea").value;
@@ -41,6 +47,7 @@ const fileInput = document.getElementById("input-file");
     title: titreInput,
     description: descriptifInput,
     date: dateInput,
+    auteur: auteurInput,
     bbox:{
       s: latitudesudInput,
       w: longitudeouestInput,
@@ -80,6 +87,7 @@ axios.post('http://localhost:8080/scenarios', requestData, {
           // Gérer les erreurs ici
           console.error('Error:', error);
       });
-      
+
+      }
     });
     

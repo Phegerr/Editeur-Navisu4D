@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/defaultValue.js":
-/*!********************************!*\
-  !*** ./src/js/defaultValue.js ***!
-  \********************************/
+/***/ "./src/js/defaultValues.js":
+/*!*********************************!*\
+  !*** ./src/js/defaultValues.js ***!
+  \*********************************/
 /***/ (() => {
 
 document.getElementById('date').valueAsDate = new Date();
@@ -170,67 +170,76 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 
 console.log("Hi");
+var previousTitleInputColor = document.getElementById("titre").style.backgroundColor;
 var save = document.getElementById("saveButton");
 save.addEventListener("click", function () {
-  var titreInput = document.getElementById("titre").value;
-  var auteurInput = document.getElementById("auteur").value;
-  var dateInput = document.getElementById("date").value;
-  var descriptifInput = document.getElementById("descriptifArea").value;
-  var longitudeInput = document.getElementById("longitude").value;
-  var latitudeInput = document.getElementById("latitude").value;
-  var altitudeInput = document.getElementById("altitude").value;
-  var tangageInput = document.getElementById("tangage").value;
-  var roulisInput = document.getElementById("roulis").value;
-  var lacetInput = document.getElementById("lacet").value;
-  var latitudesudInput = document.getElementById("latitudesud").value;
-  var latitudenordInput = document.getElementById("latitudenord").value;
-  var longitudeouestInput = document.getElementById("longitudeouest").value;
-  var longitudeestInput = document.getElementById("longitudeest").value;
-  var questionInput = document.getElementsByName("commentaireArea");
-  var questionsList = [];
-  for (var i = 0; i < questionInput.length; i++) {
-    questionsList.push(questionInput[i].value);
+  var titreInputElement = document.getElementById("titre");
+  if (!titreInputElement.checkValidity()) {
+    alert('Veuillez renseigner un titre');
+    titreInputElement.style.backgroundColor = 'red'; // Fond rouge
+  } else {
+    titreInputElement.style.backgroundColor = previousTitleInputColor;
+    var titreInput = titreInputElement.value;
+    var auteurInput = document.getElementById("auteur").value;
+    var dateInput = document.getElementById("date").value;
+    var descriptifInput = document.getElementById("descriptifArea").value;
+    var longitudeInput = document.getElementById("longitude").value;
+    var latitudeInput = document.getElementById("latitude").value;
+    var altitudeInput = document.getElementById("altitude").value;
+    var tangageInput = document.getElementById("tangage").value;
+    var roulisInput = document.getElementById("roulis").value;
+    var lacetInput = document.getElementById("lacet").value;
+    var latitudesudInput = document.getElementById("latitudesud").value;
+    var latitudenordInput = document.getElementById("latitudenord").value;
+    var longitudeouestInput = document.getElementById("longitudeouest").value;
+    var longitudeestInput = document.getElementById("longitudeest").value;
+    var questionInput = document.getElementsByName("commentaireArea");
+    var questionsList = [];
+    for (var i = 0; i < questionInput.length; i++) {
+      questionsList.push(questionInput[i].value);
+    }
+    var fileInput = document.getElementById("input-file");
+    var formData = new FormData();
+    formData.append('imageData', fileInput.files[0]);
+    var requestData = {
+      fileName: titreInput.replace(/ /g, ""),
+      //removing space
+      title: titreInput,
+      description: descriptifInput,
+      date: dateInput,
+      auteur: auteurInput,
+      bbox: {
+        s: latitudesudInput,
+        w: longitudeouestInput,
+        n: latitudenordInput,
+        e: longitudeestInput
+      },
+      questions: questionsList,
+      camera: {
+        lon: longitudeInput,
+        lat: latitudeInput,
+        alt: altitudeInput,
+        tan: tangageInput,
+        rou: roulisInput,
+        lac: lacetInput
+      }
+    };
+    requestData.imageData = formData;
+    axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost:8080/scenarios', requestData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(function (response) {
+      // Gérer la réponse ici
+      console.log(response);
+      return response.data;
+    }).then(function (data) {
+      console.log('Response from the server:', data);
+    })["catch"](function (error) {
+      // Gérer les erreurs ici
+      console.error('Error:', error);
+    });
   }
-  var fileInput = document.getElementById("input-file");
-  var formData = new FormData();
-  formData.append('imageData', fileInput.files[0]);
-  var requestData = {
-    fileName: titreInput.replace(/ /g, ""),
-    //removing space
-    title: titreInput,
-    description: descriptifInput,
-    date: dateInput,
-    bbox: {
-      s: latitudesudInput,
-      w: longitudeouestInput,
-      n: latitudenordInput,
-      e: longitudeestInput
-    },
-    questions: questionsList,
-    camera: {
-      lon: longitudeInput,
-      lat: latitudeInput,
-      alt: altitudeInput,
-      tan: tangageInput,
-      rou: roulisInput,
-      lac: lacetInput
-    }
-  };
-  requestData.imageData = formData;
-  axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost:8080/scenarios', requestData, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).then(function (response) {
-    // Gérer la réponse ici
-    console.log(response);
-    return response.data;
-  }).then(function (data) {
-    console.log('Response from the server:', data);
-  })["catch"](function (error) {
-    // Gérer les erreurs ici
-    console.error('Error:', error);
-  });
 });
 
 /***/ }),
@@ -5676,8 +5685,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_newScenario_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_js_newScenario_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _js_drag_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/drag.js */ "./src/js/drag.js");
 /* harmony import */ var _js_drag_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_js_drag_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _js_defaultValue_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/defaultValue.js */ "./src/js/defaultValue.js");
-/* harmony import */ var _js_defaultValue_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_js_defaultValue_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _js_defaultValues_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/defaultValues.js */ "./src/js/defaultValues.js");
+/* harmony import */ var _js_defaultValues_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_js_defaultValues_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _assets_logoTVwhite_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/logoTVwhite.png */ "./src/assets/logoTVwhite.png");
 /* harmony import */ var _assets_top_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/top.png */ "./src/assets/top.png");
 
@@ -5686,20 +5695,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+//import js
+//requireAll(require.context('./js/', true, /\.js$/));
 
 
-//const Top = document.getElementById('top');
-//Top.src = top;
-//import styles
+
 function requireAll(r) {
   r.keys().forEach(r);
 }
 requireAll(__webpack_require__("./src/styles sync recursive \\.css$"));
-
-//import js
-//requireAll(require.context('./js/', true, /\.js$/));
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle4430b83e97572db6b23b.js.map
+//# sourceMappingURL=bundle9c239b453e4c82dbb245.js.map

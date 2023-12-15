@@ -5,3 +5,5 @@
 4-Si un fichier existe déja, il est remplacé sans demander par l'ancien
 
 5-Autoriser les espaces pour le commentaire d'une commande
+
+6-Refuser titre vide

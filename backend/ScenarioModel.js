@@ -8,6 +8,7 @@ class ScenarioModel {
         this.description = datas.description;
         this.origin = "Terre Virtuelle",
         this.date = datas.date;
+        this.auteur = datas.auteur;
         this.bbox = datas.bbox;
         this.steps = datas.steps;
         this.imgIndex = 1;
