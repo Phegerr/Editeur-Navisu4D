@@ -25,3 +25,12 @@ ANTLR (ANother Tool for Language Recognition) est un puissant générateur de pa
 2. Configurez la variable d'environnement `CLASSPATH` pour inclure le chemin du fichier jar ANTLR. Sur les systèmes basés sur Unix/Linux/Mac, vous pouvez ajouter cette ligne à votre fichier `.bashrc`, `.zshrc`, ou autre fichier de profil de shell :
    ```bash
    export CLASSPATH=".:/chemin/vers/antlr-4.13.1-complete.jar:$CLASSPATH"
+   
+ ### Étape 3 : Tester l'installation d'ANTLR
+
+ Afficher la version installée :  ```java -jar /chemin/vers/antlr-4.13.1-complete.jar -version```
+ 
+ ## Utilisationfiere
+ 1. Modifier le fichier [scenario.g4]
+ 2. 
+ 
