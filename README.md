@@ -1,8 +1,8 @@
 # Navisu4D
 
-1- <u>npm run build<u> dans le dossier neweditor une fois un git pull effectué est indispensable car le dossier dist dans le gitignore.
+1- Il faut faire la commande <u>npm run build<u> dans le dossier frontend une fois un git pull car le dossier dist contenant la page html est dans le gitignore.
 
-2- Le fichier html pour avoir la page html et le fichier html dans neweditor/dist
+2- Le fichier html pour avoir la page html et le fichier html dans frontend/dist
 
 3- <u>npm start<u> dans le dossier backend pour lancer le coté serveur
 
