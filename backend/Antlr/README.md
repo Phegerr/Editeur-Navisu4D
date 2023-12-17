@@ -32,6 +32,6 @@ ANTLR (ANother Tool for Language Recognition) est un puissant générateur de pa
  
  ## Utilisation
  
- 1. Modifier le fichier [scenario.g4][scenario.g4]
+ 1. Modifier le fichier [scenario.g4](scenario.g4)
  2. 
  
