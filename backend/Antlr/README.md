@@ -30,7 +30,8 @@ ANTLR (ANother Tool for Language Recognition) est un puissant générateur de pa
 
  Afficher la version installée :  ```java -jar /chemin/vers/antlr-4.13.1-complete.jar -version```
  
- ## Utilisationfiere
+ ## Utilisation
+ 
  1. Modifier le fichier [scenario.g4]
  2. 
  
