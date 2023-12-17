@@ -1,35 +1,44 @@
+// Importation des modules nécessaires
 const express = require('express');
 var cors = require('cors');
-
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
-
-
-var HOST_NAME = 'localhost';
-var PORT_EXT = 8080;
-var app = express();
-var router = express.Router();
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const fs = require('fs');
 const ScenarioModel = require('./ScenarioModel.js');
-const scenariosFolders = '../ApiRestNaVisu4D/ApiRestNaVisu4D/data/scenarios';
-app.get('/', (req, res) => {
-    res.send('hi!');
-  });
 
-// add it to allow files and not get a payload to long 413 error
+// Définition des options CORS (Cross-Origin Resource Sharing)
+const corsOptions = {
+   origin: '*',               // Autoriser toutes les origines (à adapter selon les besoins)
+   credentials: true,          // Autoriser l'envoi des cookies
+   optionSuccessStatus: 200,   // Statut de succès pour les requêtes OPTIONS
+}
+
+// Définition des constantes pour le serveur
+const HOST_NAME = 'localhost';
+const PORT_EXT = 8080;
+
+// Initialisation de l'application Express
+const app = express();
+const router = express.Router();
+
+// Configuration pour gérer les données JSON volumineuses
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-app.use(cors())
-app.options('*', cors());
+
+// Activation du middleware CORS
+app.use(cors());
+app.options('*', cors()); // Configuration des options CORS pour toutes les routes
+
+// Définition d'une route de base pour tester le serveur
+app.get('/', (req, res) => {
+    res.send('hi!');
+});
+
+// Utilisation du routeur défini
 app.use(router);
 
-
+// Démarrage du serveur sur le port spécifié
 app.listen(PORT_EXT, HOST_NAME, function () {
-    console.log("Server listen  http://" + HOST_NAME + ":" + PORT_EXT);
+    console.log("Server listen http://" + HOST_NAME + ":" + PORT_EXT);
 });
 
 
@@ -54,24 +63,29 @@ router.route('/scenarios')
 
     })
     
+        // Ajout d'un scénario sur le serveur
     .post((req, res) => {
-        const dic= req.body  
+        // Extraction du corps de la requête contenant le dictionnaire
+        const dic = req.body;
+
+        // Appel de la fonction AntlrRes pour transformer les commandes en dictionnaire
         AntlrRes(res, dic)
         .then(result => {
-            // Utilisez le résultat ici
             const scenario = new ScenarioModel(result);
             scenario.save(result.fileName);
-            res.end()
-            return res
+            res.end();
+            // Retournez la réponse
+            return result;
         })
         .catch(error => {
-            // Gérez les erreurs ici
-            res.write(error.message)
-            res.end()
+            // Gestion des erreurs : Écrivez le message d'erreur dans la réponse
+            res.write(error.message);
+            res.end();
+            // Retournez la réponse avec l'erreur
             return res;
         });
-        
     })
+
     .delete(function (req, res) {
         let scenarioName = req.body.title;
         let targetDir = scenariosFolders + scenarioName;
@@ -85,6 +99,13 @@ router.route('/scenarios')
     .put(function (req, res) {
     });
 
+//
+//
+//
+//Nous n'utilisons pas le code qui suit (sauf la fonction finale). Ce code était déjà présent mais permet des fonctionnalitées que nous n'avons pas implantée
+//
+//
+//
 router.route('/scenarioFilesPath')
     .post((req, res) => {
         const main_directory_name = scenariosFolders + '/' + req.body.fileName;
@@ -126,6 +147,14 @@ router.route('/')
       const data = req.body|| 'No titre received';
       res.json({ data });
 });
+
+//
+//
+//
+//Fin du code non utilisé
+//
+//
+//
 
 async function AntlrRes(res,scenario) {
     const { giveRes } = await import('./Antlr/antlrFunction.js');
