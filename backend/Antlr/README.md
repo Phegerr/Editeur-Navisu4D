@@ -35,8 +35,17 @@ ANTLR (ANother Tool for Language Recognition) est un puissant générateur de pa
  ## Utilisation
  
  1. Modifier le fichier `scenario.g4`
- 2. Compiler le fichier modifier:
+ 2. Compiler le fichier modifier :
      ```bash
     antlr4 -Dlanguage=JavaScript scenario.g4
+ 3. Antlr va générer des fichiers notamment : `scenarioListener.js`
+ 4. Surdéfinir les fonctions de `scenarioListener.js` dans le fichier 'HtmlScenarioListener.js'
+
+## Quelques tutoriels pour la prise en main
+Voici quelques ressources utiles pour en apprendre davantage sur ANTLR :
+
+- [ANTLR Mega Tutorial](https://tomassetti.me/antlr-mega-tutorial/#chapter11)
+- [ANTLR4 Grammar: A Quick Tutorial](https://medium.com/@kv391/antlr4-grammar-a-quick-tutorial-e1f0fb6ca4ff)
+
     
  
