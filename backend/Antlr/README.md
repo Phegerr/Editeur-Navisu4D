@@ -11,7 +11,11 @@ ANTLR (ANother Tool for Language Recognition) est un puissant générateur de pa
 ### Étape 1 : Télécharger ANTLR
 
 1. Allez sur le site web d'ANTLR à l'adresse [ANTLR Download](https://www.antlr.org/download.html).
-2. Téléchargez la dernière version du fichier jar d'ANTLR, par exemple `antlr-4.x.x-complete.jar`.
+2. Téléchargez la version (4.13.1) du fichier jar d'ANTLR, par exemple `antlr-4.13.1-complete.jar`.
+3. Installez le runtime anltr via npm ou pip:
+```bash
+npm install antlr4
+```bashpip install antlr4-python3-runtime
 
 ### Étape 2 : Configurer ANTLR
 
