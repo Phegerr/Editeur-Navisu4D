@@ -86,6 +86,24 @@ export default class scenarioListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by scenarioParser#objet3D.
+	enterObjet3D(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#objet3D.
+	exitObjet3D(ctx) {
+	}
+
+
+	// Enter a parse tree produced by scenarioParser#billboard.
+	enterBillboard(ctx) {
+	}
+
+	// Exit a parse tree produced by scenarioParser#billboard.
+	exitBillboard(ctx) {
+	}
+
+
 	// Enter a parse tree produced by scenarioParser#audio.
 	enterAudio(ctx) {
 	}
@@ -317,33 +335,6 @@ export default class scenarioListener extends antlr4.tree.ParseTreeListener {
 
 	// Exit a parse tree produced by scenarioParser#oceano3D.
 	exitOceano3D(ctx) {
-	}
-
-
-	// Enter a parse tree produced by scenarioParser#fromveur.
-	enterFromveur(ctx) {
-	}
-
-	// Exit a parse tree produced by scenarioParser#fromveur.
-	exitFromveur(ctx) {
-	}
-
-
-	// Enter a parse tree produced by scenarioParser#manche.
-	enterManche(ctx) {
-	}
-
-	// Exit a parse tree produced by scenarioParser#manche.
-	exitManche(ctx) {
-	}
-
-
-	// Enter a parse tree produced by scenarioParser#iroise.
-	enterIroise(ctx) {
-	}
-
-	// Exit a parse tree produced by scenarioParser#iroise.
-	exitIroise(ctx) {
 	}
 
 

@@ -3,6 +3,24 @@ import fs from "fs";
 import ScenarioLexer from './scenarioLexer.js';
 import ScenarioParser from './scenarioParser.js';
 import ScenarioListener from './scenarioListener.js';
+
+// Fonction pour vérifier si une chaîne est dans le CSV
+function isStringInCSV(filePath, searchString) {
+    // Lire le contenu du fichier CSV
+    const csvContent = fs.readFileSync(filePath, 'utf8');
+
+    // Diviser le contenu en lignes
+    const lines = csvContent.split('\n');
+
+    // Rechercher la chaîne dans chaque ligne
+    for (let line of lines) {
+        if (line.includes(searchString)) {
+            return true; // Retourner vrai si la chaîne est trouvée
+        }
+    }
+    return false; // Retourner faux si la chaîne n'est pas trouvée
+}
+
 export default class HtmlScenarioListener extends ScenarioListener {
     constructor(res,scenario) {
         super();
@@ -77,7 +95,12 @@ export default class HtmlScenarioListener extends ScenarioListener {
 
     enterLitto3D(ctx) {
         var cmdTab = ctx.getText().split(",");
-        this.vars.bathymetry = { "litto3D": cmdTab[1] };
+        if(isStringInCSV("../assets/csv/regions.csv",cmdTab[1])){
+        this.vars.bathymetry= {"litto3D":cmdTab[1]};
+        }
+        else{
+            throw new Error('name : '+cmdTab[1]+' not found')
+        }
     }
 
     exitLitto3D(ctx) {
@@ -128,9 +151,18 @@ export default class HtmlScenarioListener extends ScenarioListener {
     enterTidalAtlas(ctx) {
         this.scenario.steps[this.index].layer.oceanography.currents.tidalAtlas = {};
     }
-
     enterOceano3D(ctx) {
-        this.scenario.steps[this.index].layer.oceanography.currents.tidalAtlas = {"3D" :{}};
+        var cmdTab = ctx.getText().split(",");
+        if (isStringInCSV("../assets/csv/oceano3D.csv", cmdTab[1])) {
+            // Création d'un objet pour stocker la propriété
+            let litto3DObj = {};
+            litto3DObj[cmdTab[1]] = cmdTab[2];
+    
+            // Affectation de l'objet à la propriété correspondante
+            this.scenario.steps[this.index].layer.oceanography.currents.tidalAtlas = {"litto3D": litto3DObj};
+        } else {
+            throw new Error('name: ' + cmdTab[1] + ' not found');
+        }
     }
 
     enterForecast(ctx) {
@@ -143,21 +175,6 @@ export default class HtmlScenarioListener extends ScenarioListener {
         this.scenario.steps[this.index].layer.oceanography.currents.tidalAtlas["3D"].iroise = cmdTab[1];
     }
 
-  
-    enterFromveur(ctx) {
-        var cmdTab = ctx.getText().split(",");
-        this.scenario.steps[this.index].layer.oceanography.currents.tidalAtlas["3D"].fromveur = cmdTab[1];
-    }
-
-    enterManche(ctx) {
-        var cmdTab = ctx.getText().split(",");
-        this.scenario.steps[this.index].layer.oceanography.currents.tidalAtlas["3D"].manche= cmdTab[1];
-    }
-
-    enterOceano2D(ctx) {
-        var cmdTab = ctx.getText().split(",");
-        this.scenario.steps[this.index].layer.oceanography.currents.tidalAtlas["2D"]= cmdTab[1];
-    }
 
     enterTides(ctx) {
         var cmdTab = ctx.getText().split(",");
@@ -188,7 +205,22 @@ export default class HtmlScenarioListener extends ScenarioListener {
 
     enterRaster(ctx){
         var cmdTab = ctx.getText().split(",");
-        this.scenario.steps[this.index].chart.raster= parseInt(cmdTab[1]);
+        if(cmdTab.length===2){
+        this.scenario.steps[this.index].chart.raster= cmdTab[1];
+        }
+        else {
+            this.scenario.steps[this.index].chart.raster={}
+        }
+    }
+
+    enterShom(ctx){
+        var cmdTab = ctx.getText().split(",");
+        if(isStringInCSV("../assets/csv/SHOM.csv",cmdTab[1])){
+        this.scenario.steps[this.index].chart.raster.shom= cmdTab[1];
+        }
+        else{
+            throw new Error('name : '+cmdTab[1]+' not found')
+        }
     }
 
     enterVector(ctx){
@@ -198,7 +230,12 @@ export default class HtmlScenarioListener extends ScenarioListener {
 
     enterMbtiles(ctx){
         var cmdTab = ctx.getText().split(",");
-        this.scenario.steps[this.index].chart.mbtiles= cmdTab[1];
+        if(isStringInCSV("../assets/csv/mbtiles_name.csv",cmdTab[1])){
+            this.scenario.steps[this.index].chart.mbtiles= cmdTab[1];
+        }
+        else{
+            throw new Error('name : '+cmdTab[1]+' not found')
+        }
     }
 
     enterImage(ctx){
