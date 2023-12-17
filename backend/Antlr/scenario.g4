@@ -10,7 +10,7 @@ comment
     ;
 
 command
-    : STAR ( ' ' | '\t' )* (bbox | layer | move | navigation | chart | image | text| image3D | audio | video | speech | video3D | fireworks |simulation) 
+    : STAR ( ' ' | '\t' )* (bbox | layer | move | navigation | chart | image | text| image3D | audio | video | speech | video3D | fireworks | objet3D | billboard|simulation) 
     ;
 
 simulation:
@@ -35,6 +35,14 @@ text:
 
 image3D:
     'image3D' SEP WORD SEP WORD SEP NUMBER SEP NUMBER
+    ;
+
+objet3D:
+    'objet3D' SEP WORD SEP WORD SEP NUMBER SEP NUMBER
+    ;
+
+billboard:
+    'billboard' SEP WORD SEP WORD SEP NUMBER SEP NUMBER
     ;
 
 audio:
@@ -108,11 +116,11 @@ raster
 
 shom
     :
-    NUMBER WORD*
+    'shom' SEP NUMBER WORD*
     ;
 
 mbtiles
-    : 'mbtiles' SEP ('manche' | 'atlantiqueNord' | 'egee')
+    : 'mbtiles' SEP (WORD | TEXT)
     ;
  
 // Définition de la commande layer
@@ -141,20 +149,9 @@ oceano2D
     ;
 
 oceano3D
-    :  '3D' SEP (manche|fromveur|iroise)
+    :  '3D' SEP (TEXT | WORD) SEP ('surface'|'midle'|'bottom')
     ;
 
-fromveur
-    : 'fromveur' SEP ('surface'|'midle'|'bottom')
-    ;
-
-manche
-    : 'manche' SEP ('surface'|'midle'|'bottom')
-    ;
-
-iroise
-    : 'iroise' SEP ('surface'|'midle'|'bottom')
-    ;
 
 forecast
     : 'forecast' SEP ('static' | 'dynamic')
@@ -170,7 +167,7 @@ sonar
 	;
 
 litto3D
-    : 'litto3D' SEP ('saint-barthelemy' | 'saint-martin' | 'guadeloupe' | 'finistere' | 'languedoc-roussillon' | 'provence' | 'eparses' | 'mayotte' | 'reunion' | 'normandie' | 'bretagne' | 'iroise' | 'morbihan' | 'rance' | 'corse' | 'manche' | 'fromveur')
+    : 'litto3D' SEP (TEXT|'-'|WORD)+
 	;
 
 bool: 
@@ -198,7 +195,7 @@ WORD
 
 
 TEXT
-    : [a-zA-Z_0-9]+
+    :[a-zA-Z_0-9]+
     ;
 
 
