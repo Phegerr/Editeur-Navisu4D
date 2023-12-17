@@ -14,9 +14,11 @@ ANTLR (ANother Tool for Language Recognition) est un puissant générateur de pa
 2. Téléchargez la version 4.13.1 du fichier jar d'ANTLR, par exemple `antlr-4.13.1-complete.jar`.
 3. Installez le runtime ANTLR via npm ou pip:
    - Pour Node.js (npm):
-     ```bash npm install antlr4 ```
+     ```bash
+     npm install antlr4
    - Pour Python (pip):
-     ```bash pip install antlr4-python3-runtime ```
+     ```bash
+     pip install antlr4-python3-runtime
 
 ### Étape 2 : Configurer ANTLR
 
@@ -33,5 +35,8 @@ ANTLR (ANother Tool for Language Recognition) est un puissant générateur de pa
  ## Utilisation
  
  1. Modifier le fichier `scenario.g4`
- 2. Compiler le fichier modifier  ```bash antlr4 -Dlanguage=JavaScript scenario.g4 ```
+ 2. Compiler le fichier modifier:
+     ```bash
+    antlr4 -Dlanguage=JavaScript scenario.g4
+    
  
