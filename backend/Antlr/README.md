@@ -11,17 +11,21 @@ ANTLR (ANother Tool for Language Recognition) est un puissant générateur de pa
 ### Étape 1 : Télécharger ANTLR
 
 1. Allez sur le site web d'ANTLR à l'adresse [ANTLR Download](https://www.antlr.org/download.html).
-2. Téléchargez la version (4.13.1) du fichier jar d'ANTLR, par exemple `antlr-4.13.1-complete.jar`.
-3. Installez le runtime anltr via npm ou pip:
-```bash
-npm install antlr4
-```bashpip install antlr4-python3-runtime
+2. Téléchargez la version 4.13.1 du fichier jar d'ANTLR, par exemple `antlr-4.13.1-complete.jar`.
+3. Installez le runtime ANTLR via npm ou pip:
+   - Pour Node.js (npm):
+     ```bash
+     npm install antlr4
+     ```
+   - Pour Python (pip):
+     ```bash
+     pip install antlr4-python3-runtime
+     ```
 
 ### Étape 2 : Configurer ANTLR
 
 1. Placez le fichier jar téléchargé dans un répertoire de votre choix. Ce répertoire sera utilisé pour stocker le jar d'ANTLR.
 
 2. Configurez la variable d'environnement `CLASSPATH` pour inclure le chemin du fichier jar ANTLR. Sur les systèmes basés sur Unix/Linux/Mac, vous pouvez ajouter cette ligne à votre fichier `.bashrc`, `.zshrc`, ou autre fichier de profil de shell :
-
    ```bash
-   export CLASSPATH=".:/chemin/vers/antlr-4.x.x-complete.jar:$CLASSPATH"
+   export CLASSPATH=".:/chemin/vers/antlr-4.13.1-complete.jar:$CLASSPATH"
