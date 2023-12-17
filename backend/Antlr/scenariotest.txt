@@ -1,0 +1,28 @@
+*"blablabla"
+            *layer,oceanography,currents,tidalAtlas,3D,manche,midle*navigation,pilotchart,NAC,3*chart,raster,shom,7311
+            *chart,mbtiles,manche*bbox,48.3,-5.2,48.65,-4.5*layer,bathymetry,litto3D,guadeloupe"
+            *simulation,json,track_pizou_height.json,BelEspoirM.glb,true,waves.wav,6.0,true,false,0,0,255,0,240,meteo,arome
+            *layer,bathymetry,emodnet*move,flyTo,camera,-4.54,48.57,90000,0.0,31.0,0.0
+            *layer,bathymetry,litto3D,morbiha"n*move,flyTo,camera,-4.54,48.57,90000
+            *video,https://www.google.com/search?q=ytb&rlz=1C1CHBF_frFR915FR915&oq=ytb&gs_lcrp=EgZjaHJvbWUqBwgAEAAYjwIyBwgAEAAYjwIyDQgBEC4YxwEY0QMYgAQyBggCEEUYQDIHCAMQABiABDIJCAQQABgKGIAEMgcIBRAAGIAEMgcIBhAAGIAEMg8IBxAAGAoYgwEYsQMYgATSAQc0MjZqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8,fnfa,50,50,50,50"
+            *chart,raster,bretagne
+            *chart,vector,depare*move,flyTo,camera,-4.46,48.5,50000
+            *chart,raster,7311
+            *chart,vector,resare
+            *move,flyTo,camera,-4.46,48.5,228111
+            *chart,vector,depare*chart,vector,hrbare*chart,vector,resare
+            *chart,vector,buoyage*move,flyTo,camera,-4.56073, 48.60283, 250.0,180,-29.0,0.0
+            *chart,raster,openSeaMap
+            *chart,vector,staticLight*move,flyTo,camera,-4.490, 48.797,19083,183,-29.0,0.0
+            *chart,mbtiles,manche*move,flyTo,camera,-4.38808,48.3522,45000
+            *chart,raster,openTopoMap*move,flyTo,camera,1.8,27.72,1755712,19.0,-56.0,0.0
+            *layer,bathymetry,emodnet
+            *layer,bathymetry,gebco*move,flyTo,camera,-4.54,48.57,900000
+            *layer,altimetry,litto3D,guadeloupe
+            *bbox,-90,-180,90,180*layer,oceanography,tides,type*move,flyTo,camera,-5,48,10900000
+            *layer,oceanography,tides,oceanogram
+            *layer,oceanography,currents,forecast,dynamic
+            *image,bosphore.jpg,Le détroit du Bosphore,100,50 *move,flyTo,camera,28.94961,40.47072,32082,2,-25,0
+            *video,https://www.youtube.com/embed/yiidUwe-QeQ,Webcam Pointe du Raz,800,420,100,100
+            *simulation,json,test.json
+            *navigation,pilotchat,NAC,1
