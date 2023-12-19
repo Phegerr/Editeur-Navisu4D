@@ -30,7 +30,7 @@ class ScenarioModel {
             introduction: this.introduction,
             steps: this.steps,
             cmd: this.cmd,
-            commandes: this.questions,
+            commandes: this.commandes,
             camera : this.camera,
         };
     }
