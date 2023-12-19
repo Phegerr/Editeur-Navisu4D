@@ -65,7 +65,7 @@ class ScenarioModel {
         this.mainDirectoryName = '../ApiRestNaVisu4D/ApiRestNaVisu4D/data/scenarios/' + fileName;
         this.checkDirectory();
         this.saveQuestions();
-        const jsonContent = JSON.stringify(this.getScenario(),null,"/t");
+        const jsonContent = JSON.stringify(this.getScenario(),null,"4");
         const fullPath = this.mainDirectoryName + '/' + fileName + '.json';
         fs.writeFileSync(fullPath, jsonContent, 'utf8');
         this.exportScenario(fileName);
