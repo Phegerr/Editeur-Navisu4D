@@ -20,21 +20,31 @@ document.getElementById('date').valueAsDate = new Date();
 var dropArea = document.getElementById("dropArea");
 var inputFile = document.getElementById("input-file");
 var imageView = document.getElementById("img-view");
-inputFile.addEventListener("change", uploadImage);
-function uploadImage() {
-  inputFile.files[0];
-  var imgLink = URL.createObjectURL(inputFile.files[0]);
-  imageView.style.backgroundImage = "url(".concat(imgLink, ")");
-  imageView.textContent = "";
-  imageView.style.border = 0;
+var resetButton = document.getElementById("reset-button"); // Ajout du bouton de réinitialisation
+
+inputFile.addEventListener("change", uploadFile);
+function uploadFile() {
+  var fileName = inputFile.files[0].name; // Obtenez le nom du fichier
+  imageView.textContent = fileName; // Affichez le nom du fichier dans la dropArea
+  imageView.style.backgroundImage = ""; // Supprimez l'image de l'arrière-plan
+  imageView.style.border = "2px dashed #ccc"; // Ajoutez une bordure à la dropArea
 }
+
 dropArea.addEventListener("dragover", function (e) {
   e.preventDefault();
 });
 dropArea.addEventListener("drop", function (e) {
   e.preventDefault();
   inputFile.files = e.dataTransfer.files;
-  uploadImage();
+  uploadFile();
+});
+
+// Ajout d'un événement de clic pour le bouton de réinitialisation
+resetButton.addEventListener("click", function () {
+  imageView.textContent = "Drag and drop or click here to upload file"; // Texte par défaut
+  imageView.style.backgroundImage = ""; // Supprimez l'image de l'arrière-plan
+  imageView.style.border = "2px dashed #ccc"; // Ajoutez une bordure à la dropArea
+  inputFile.value = ""; // Réinitialisez la valeur du champ de fichier
 });
 
 /***/ }),
@@ -727,12 +737,12 @@ h3,
   border-radius: 5px;
 }
 .Drag_img {
-  margin-right: 20px; /* Espacement entre les dropAreas, ajustez selon vos besoins */
+  margin-right: 20px;
 }
 
 #dropArea {
-  width: 150px; /* Largeur de la dropArea, ajustez selon vos besoins */
-  height: 150px; /* Hauteur de la dropArea, ajustez selon vos besoins */
+  width: 200px; /* Largeur de la dropArea ajustée pour un rectangle, ajustez selon vos besoins */
+  height: 100px; /* Hauteur de la dropArea, ajustez selon vos besoins */
   border: 2px dashed #ccc;
   display: flex;
   flex-direction: column;
@@ -740,21 +750,23 @@ h3,
   justify-content: center;
   cursor: pointer;
   position: relative;
+  margin-bottom: 20px; /* Ajout d'une marge inférieure pour espacement */
 }
 
 #img-view {
-  width: 100%; 
-  height: 100%; 
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px dashed #ccc; /* Ajout d'une bordure à la dropArea */
 }
 
 #img-view img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; 
+  object-fit: contain;
 }
 
 #img-view p {
@@ -763,10 +775,26 @@ h3,
 
 .area-title {
   position: absolute;
-  top: 10px;
+  top: -20px; /* Ajustement pour placer le titre au-dessus de la dropArea */
   left: 50%;
   transform: translateX(-50%);
   font-weight: bold;
+}
+
+/* Ajout de styles pour le bouton de réinitialisation */
+
+
+#reset-button {
+  display: inline-block;
+  width: 10rem;
+  height: 2rem;
+  font-size: 0.8em;
+  vertical-align: middle;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgb(9, 143, 45);
+  background-color: hsl(123, 57%, 15%);
+  color: whitesmoke;
+  transform: rotate(0deg);
 }
 
 /*-----------
@@ -800,7 +828,7 @@ input[type=checkbox]:checked::after {
   text-align: center;
   transform: rotate(270deg);
 }
--------------*/`, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":";AACA;6BAC6B;;AAE7B;;;EAGE,4BAA4B;EAC5B,oBAAoB;;AAEtB;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,gBAAgB;EAChB,aAAa;EACb,uBAAuB;EACvB,aAAa;EACb,yCAAyC;AAC3C;;AAEA;EACE,aAAa;EACb,eAAe;EACf,2BAA2B;EAC3B,qBAAqB;EACrB,kBAAkB;EAClB,QAAQ;EACR,WAAW;EACX,WAAW;;EAEX,YAAY;EACZ;oCACkC;EAClC,aAAa;AACf;;AAEA;EACE,gBAAgB;EAChB,eAAe;EACf,YAAY;EACZ,cAAc;EACd,cAAc;EACd,UAAU;EACV,kBAAkB;EAClB,SAAS;AACX;;AAEA;EACE,WAAW;EACX,gBAAgB;EAChB,eAAe;EACf,0BAA0B;AAC5B;;AAEA;EACE,kBAAkB;EAClB,YAAY;EACZ,SAAS;EACT,SAAS;;AAEX;;AAEA;EACE,UAAU;EACV,gBAAgB;EAChB,aAAa;EACb,UAAU;EACV,mBAAmB;EACnB,kBAAkB;EAClB,mBAAmB;EACnB,mBAAmB;EACnB,UAAU;AACZ;;;;AAIA;EACE,yBAAyB;EACzB,gBAAgB;AAClB;;;AAGA;;EAEE,cAAc;EACd,iBAAiB;EACjB,UAAU;EACV,iBAAiB;EACjB,UAAU;EACV,SAAS;EACT,qBAAqB;EACrB,aAAa;EACb,sBAAsB;EACtB,eAAe;EACf,kBAAkB;AACpB;;;AAGA;;;;;EAKE,cAAc;EACd,cAAc;EACd,cAAc;EACd,UAAU;EACV,kBAAkB;EAClB,QAAQ;AACV;;AAEA;;;EAGE,yBAAyB;AAC3B;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,aAAa;EACb,kBAAkB;EAClB,QAAQ;AACV;;AAEA;EACE,aAAa;EACb,8BAA8B;EAC9B,UAAU;EACV,cAAc;AAChB;;AAEA;EACE,iBAAiB;EACjB,UAAU;EACV,iBAAiB;EACjB,UAAU;EACV,SAAS;EACT,aAAa;EACb,eAAe;EACf,kBAAkB;AACpB;;AAEA;;EAEE,eAAe;AACjB;;AAEA;EACE,cAAc;EACd,kBAAkB;EAClB,QAAQ;AACV;;AAEA;EACE,qBAAqB;EACrB,YAAY;AACd;;AAEA;EACE,mBAAmB;AACrB;AACA;EACE,cAAc;EACd,mBAAmB;AACrB;;AAEA;;EAEE,uBAAuB;EACvB,aAAa;EACb,uBAAuB;EACvB,kBAAkB;AACpB;AACA;EACE,kBAAkB,EAAE,8DAA8D;AACpF;;AAEA;EACE,YAAY,EAAE,sDAAsD;EACpE,aAAa,EAAE,sDAAsD;EACrE,uBAAuB;EACvB,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,uBAAuB;EACvB,eAAe;EACf,kBAAkB;AACpB;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,gBAAgB;EAChB,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;;AAEA;EACE,SAAS;AACX;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,SAAS;EACT,2BAA2B;EAC3B,iBAAiB;AACnB;;AAEA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;cA+Bc","sourcesContent":["\r\n/*@import url(./menuFichiers.css);\r\n@import url(./buttons.css); */\r\n\r\n*,\r\n*::before,\r\n*::after {\r\n  -webkit-transition: all 0.3s;\r\n  transition: all 0.3s;\r\n\r\n}\r\n\r\nhtml {\r\n  margin: 0px;\r\n  padding: 0px;\r\n  width: 100%;\r\n}\r\n\r\nbody {\r\n  background: #fff;\r\n  display: flex;\r\n  justify-content: center;\r\n  height: 100vh;\r\n  font-family: Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.bandeau {\r\n  display: flex;\r\n  position: fixed;\r\n  background: rgb(16, 58, 18);\r\n  padding-bottom: 115px;\r\n  text-align: center;\r\n  top: 0px;\r\n  width: 100%;\r\n  height: 0px;\r\n\r\n  color: white;\r\n  /*border-radius: 0 0 10px 10px ;\r\n    box-shadow: 0px 0px 10px black;*/\r\n  z-index: 5000;\r\n}\r\n\r\n.labelBandeau {\r\n  font-size: 2.0em;\r\n  font-weight: 80;\r\n  color: white;\r\n  display: block;\r\n  margin: 0 auto;\r\n  width: 95%;\r\n  position: relative;\r\n  top: 30px;\r\n}\r\n\r\nh1 {\r\n  width: 100%;\r\n  font-size: 2.0em;\r\n  font-weight: 80;\r\n  /*color: rgb(16, 58, 18);*/\r\n}\r\n\r\nimg {\r\n  position: absolute;\r\n  width: 100px;\r\n  top: 10px;\r\n  right: 2%;\r\n\r\n}\r\n\r\n.boxForm {\r\n  top: 105px;\r\n  margin-top: 30px;\r\n  padding: 50px;\r\n  width: 90%;\r\n  height: fit-content;\r\n  position: relative;\r\n  background: #f8f9fa;\r\n  border-radius: 10px;\r\n  z-index: 0;\r\n}\r\n\r\n\r\n\r\n::placeholder {\r\n  color: rgb(166, 166, 166);\r\n  font-size: 0.9em;\r\n}\r\n\r\n\r\nselect,\r\ntextarea {\r\n  display: block;\r\n  margin: 20px auto;\r\n  outline: 0;\r\n  background: white;\r\n  width: 95%;\r\n  border: 0;\r\n  border-color: #76b998;\r\n  padding: 15px;\r\n  box-sizing: border-box;\r\n  font-size: 14px;\r\n  border-radius: 3px;\r\n}\r\n\r\n\r\n.labelTitre,\r\n.labelSelect,\r\n.labelTxt,\r\n.labelZone,\r\n.labelQuestionTxt {\r\n  color: #5a6268;\r\n  display: block;\r\n  margin: 0 auto;\r\n  width: 95%;\r\n  position: relative;\r\n  top: 7px;\r\n}\r\n\r\nh3,\r\n.labelTitre,\r\n.labelZone {\r\n  text-transform: uppercase;\r\n}\r\n\r\n.labelQuestionTxt {\r\n  text-transform: none;\r\n}\r\n\r\n.labelQuestionTxtTest {\r\n  color: purple;\r\n  position: relative;\r\n  top: 8px;\r\n}\r\n\r\n.flex_n_Inputs {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  width: 95%;\r\n  margin: 0 auto;\r\n}\r\n\r\n.flexInp {\r\n  margin: 20px auto;\r\n  outline: 0;\r\n  background: white;\r\n  width: 90%;\r\n  border: 0;\r\n  padding: 15px;\r\n  font-size: 14px;\r\n  border-radius: 3px;\r\n}\r\n\r\n.flexLeftInp,\r\n.flexRightInp {\r\n  flex-basis: 45%;\r\n}\r\n\r\n.labelFlex {\r\n  color: #5a6268;\r\n  position: relative;\r\n  top: 8px;\r\n}\r\n\r\n#sous-titre {\r\n  display: inline-block;\r\n  color: white;\r\n}\r\n\r\n.flexImgInp {\r\n  margin-bottom: 20px;\r\n}\r\n#fileslbl {\r\n  display: block;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n#fileslbl,\r\n#progress {\r\n  background-color: white;\r\n  padding: 10px;\r\n  border: 1px solid white;\r\n  border-radius: 5px;\r\n}\r\n.Drag_img {\r\n  margin-right: 20px; /* Espacement entre les dropAreas, ajustez selon vos besoins */\r\n}\r\n\r\n#dropArea {\r\n  width: 150px; /* Largeur de la dropArea, ajustez selon vos besoins */\r\n  height: 150px; /* Hauteur de la dropArea, ajustez selon vos besoins */\r\n  border: 2px dashed #ccc;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  cursor: pointer;\r\n  position: relative;\r\n}\r\n\r\n#img-view {\r\n  width: 100%; \r\n  height: 100%; \r\n  overflow: hidden;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n#img-view img {\r\n  max-width: 100%;\r\n  max-height: 100%;\r\n  object-fit: contain; \r\n}\r\n\r\n#img-view p {\r\n  margin: 0;\r\n}\r\n\r\n.area-title {\r\n  position: absolute;\r\n  top: 10px;\r\n  left: 50%;\r\n  transform: translateX(-50%);\r\n  font-weight: bold;\r\n}\r\n\r\n/*-----------\r\ninput[type=checkbox] {\r\n  appearance: none;\r\n}\r\n\r\ninput[type=checkbox]::after {\r\n  color: #eee;\r\n  background: #143b28;\r\n  font-size: 1em;\r\n  border: 0;\r\n  width: 2em;\r\n  height: 2em;\r\n  border-radius: 100%;\r\n  text-align: center;\r\n  content: \"\\276F\";\r\n  transform: rotate(90deg);\r\n}\r\n\r\ninput[type=checkbox]:checked::after {\r\n  content: \"\\276F\";\r\n  color: #eee;\r\n  \r\n  background-color: red;\r\n  font-size: 1em;\r\n  border: 0;\r\n  width: 2em;\r\n  height: 2em;\r\n  border-radius: 100%;\r\n  text-align: center;\r\n  transform: rotate(270deg);\r\n}\r\n-------------*/"],"sourceRoot":""}]);
+-------------*/`, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":";AACA;6BAC6B;;AAE7B;;;EAGE,4BAA4B;EAC5B,oBAAoB;;AAEtB;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,gBAAgB;EAChB,aAAa;EACb,uBAAuB;EACvB,aAAa;EACb,yCAAyC;AAC3C;;AAEA;EACE,aAAa;EACb,eAAe;EACf,2BAA2B;EAC3B,qBAAqB;EACrB,kBAAkB;EAClB,QAAQ;EACR,WAAW;EACX,WAAW;;EAEX,YAAY;EACZ;oCACkC;EAClC,aAAa;AACf;;AAEA;EACE,gBAAgB;EAChB,eAAe;EACf,YAAY;EACZ,cAAc;EACd,cAAc;EACd,UAAU;EACV,kBAAkB;EAClB,SAAS;AACX;;AAEA;EACE,WAAW;EACX,gBAAgB;EAChB,eAAe;EACf,0BAA0B;AAC5B;;AAEA;EACE,kBAAkB;EAClB,YAAY;EACZ,SAAS;EACT,SAAS;;AAEX;;AAEA;EACE,UAAU;EACV,gBAAgB;EAChB,aAAa;EACb,UAAU;EACV,mBAAmB;EACnB,kBAAkB;EAClB,mBAAmB;EACnB,mBAAmB;EACnB,UAAU;AACZ;;;;AAIA;EACE,yBAAyB;EACzB,gBAAgB;AAClB;;;AAGA;;EAEE,cAAc;EACd,iBAAiB;EACjB,UAAU;EACV,iBAAiB;EACjB,UAAU;EACV,SAAS;EACT,qBAAqB;EACrB,aAAa;EACb,sBAAsB;EACtB,eAAe;EACf,kBAAkB;AACpB;;;AAGA;;;;;EAKE,cAAc;EACd,cAAc;EACd,cAAc;EACd,UAAU;EACV,kBAAkB;EAClB,QAAQ;AACV;;AAEA;;;EAGE,yBAAyB;AAC3B;;AAEA;EACE,oBAAoB;AACtB;;AAEA;EACE,aAAa;EACb,kBAAkB;EAClB,QAAQ;AACV;;AAEA;EACE,aAAa;EACb,8BAA8B;EAC9B,UAAU;EACV,cAAc;AAChB;;AAEA;EACE,iBAAiB;EACjB,UAAU;EACV,iBAAiB;EACjB,UAAU;EACV,SAAS;EACT,aAAa;EACb,eAAe;EACf,kBAAkB;AACpB;;AAEA;;EAEE,eAAe;AACjB;;AAEA;EACE,cAAc;EACd,kBAAkB;EAClB,QAAQ;AACV;;AAEA;EACE,qBAAqB;EACrB,YAAY;AACd;;AAEA;EACE,mBAAmB;AACrB;AACA;EACE,cAAc;EACd,mBAAmB;AACrB;;AAEA;;EAEE,uBAAuB;EACvB,aAAa;EACb,uBAAuB;EACvB,kBAAkB;AACpB;AACA;EACE,kBAAkB;AACpB;;AAEA;EACE,YAAY,EAAE,gFAAgF;EAC9F,aAAa,EAAE,sDAAsD;EACrE,uBAAuB;EACvB,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,uBAAuB;EACvB,eAAe;EACf,kBAAkB;EAClB,mBAAmB,EAAE,iDAAiD;AACxE;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,gBAAgB;EAChB,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,uBAAuB,EAAE,sCAAsC;AACjE;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;;AAEA;EACE,SAAS;AACX;;AAEA;EACE,kBAAkB;EAClB,UAAU,EAAE,6DAA6D;EACzE,SAAS;EACT,2BAA2B;EAC3B,iBAAiB;AACnB;;AAEA,uDAAuD;;;AAGvD;EACE,qBAAqB;EACrB,YAAY;EACZ,YAAY;EACZ,gBAAgB;EAChB,sBAAsB;EACtB,kBAAkB;EAClB,mCAAmC;EACnC,oCAAoC;EACpC,iBAAiB;EACjB,uBAAuB;AACzB;;AAEA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;cA+Bc","sourcesContent":["\r\n/*@import url(./menuFichiers.css);\r\n@import url(./buttons.css); */\r\n\r\n*,\r\n*::before,\r\n*::after {\r\n  -webkit-transition: all 0.3s;\r\n  transition: all 0.3s;\r\n\r\n}\r\n\r\nhtml {\r\n  margin: 0px;\r\n  padding: 0px;\r\n  width: 100%;\r\n}\r\n\r\nbody {\r\n  background: #fff;\r\n  display: flex;\r\n  justify-content: center;\r\n  height: 100vh;\r\n  font-family: Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.bandeau {\r\n  display: flex;\r\n  position: fixed;\r\n  background: rgb(16, 58, 18);\r\n  padding-bottom: 115px;\r\n  text-align: center;\r\n  top: 0px;\r\n  width: 100%;\r\n  height: 0px;\r\n\r\n  color: white;\r\n  /*border-radius: 0 0 10px 10px ;\r\n    box-shadow: 0px 0px 10px black;*/\r\n  z-index: 5000;\r\n}\r\n\r\n.labelBandeau {\r\n  font-size: 2.0em;\r\n  font-weight: 80;\r\n  color: white;\r\n  display: block;\r\n  margin: 0 auto;\r\n  width: 95%;\r\n  position: relative;\r\n  top: 30px;\r\n}\r\n\r\nh1 {\r\n  width: 100%;\r\n  font-size: 2.0em;\r\n  font-weight: 80;\r\n  /*color: rgb(16, 58, 18);*/\r\n}\r\n\r\nimg {\r\n  position: absolute;\r\n  width: 100px;\r\n  top: 10px;\r\n  right: 2%;\r\n\r\n}\r\n\r\n.boxForm {\r\n  top: 105px;\r\n  margin-top: 30px;\r\n  padding: 50px;\r\n  width: 90%;\r\n  height: fit-content;\r\n  position: relative;\r\n  background: #f8f9fa;\r\n  border-radius: 10px;\r\n  z-index: 0;\r\n}\r\n\r\n\r\n\r\n::placeholder {\r\n  color: rgb(166, 166, 166);\r\n  font-size: 0.9em;\r\n}\r\n\r\n\r\nselect,\r\ntextarea {\r\n  display: block;\r\n  margin: 20px auto;\r\n  outline: 0;\r\n  background: white;\r\n  width: 95%;\r\n  border: 0;\r\n  border-color: #76b998;\r\n  padding: 15px;\r\n  box-sizing: border-box;\r\n  font-size: 14px;\r\n  border-radius: 3px;\r\n}\r\n\r\n\r\n.labelTitre,\r\n.labelSelect,\r\n.labelTxt,\r\n.labelZone,\r\n.labelQuestionTxt {\r\n  color: #5a6268;\r\n  display: block;\r\n  margin: 0 auto;\r\n  width: 95%;\r\n  position: relative;\r\n  top: 7px;\r\n}\r\n\r\nh3,\r\n.labelTitre,\r\n.labelZone {\r\n  text-transform: uppercase;\r\n}\r\n\r\n.labelQuestionTxt {\r\n  text-transform: none;\r\n}\r\n\r\n.labelQuestionTxtTest {\r\n  color: purple;\r\n  position: relative;\r\n  top: 8px;\r\n}\r\n\r\n.flex_n_Inputs {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  width: 95%;\r\n  margin: 0 auto;\r\n}\r\n\r\n.flexInp {\r\n  margin: 20px auto;\r\n  outline: 0;\r\n  background: white;\r\n  width: 90%;\r\n  border: 0;\r\n  padding: 15px;\r\n  font-size: 14px;\r\n  border-radius: 3px;\r\n}\r\n\r\n.flexLeftInp,\r\n.flexRightInp {\r\n  flex-basis: 45%;\r\n}\r\n\r\n.labelFlex {\r\n  color: #5a6268;\r\n  position: relative;\r\n  top: 8px;\r\n}\r\n\r\n#sous-titre {\r\n  display: inline-block;\r\n  color: white;\r\n}\r\n\r\n.flexImgInp {\r\n  margin-bottom: 20px;\r\n}\r\n#fileslbl {\r\n  display: block;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n#fileslbl,\r\n#progress {\r\n  background-color: white;\r\n  padding: 10px;\r\n  border: 1px solid white;\r\n  border-radius: 5px;\r\n}\r\n.Drag_img {\r\n  margin-right: 20px;\r\n}\r\n\r\n#dropArea {\r\n  width: 200px; /* Largeur de la dropArea ajustée pour un rectangle, ajustez selon vos besoins */\r\n  height: 100px; /* Hauteur de la dropArea, ajustez selon vos besoins */\r\n  border: 2px dashed #ccc;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  cursor: pointer;\r\n  position: relative;\r\n  margin-bottom: 20px; /* Ajout d'une marge inférieure pour espacement */\r\n}\r\n\r\n#img-view {\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: hidden;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  border: 2px dashed #ccc; /* Ajout d'une bordure à la dropArea */\r\n}\r\n\r\n#img-view img {\r\n  max-width: 100%;\r\n  max-height: 100%;\r\n  object-fit: contain;\r\n}\r\n\r\n#img-view p {\r\n  margin: 0;\r\n}\r\n\r\n.area-title {\r\n  position: absolute;\r\n  top: -20px; /* Ajustement pour placer le titre au-dessus de la dropArea */\r\n  left: 50%;\r\n  transform: translateX(-50%);\r\n  font-weight: bold;\r\n}\r\n\r\n/* Ajout de styles pour le bouton de réinitialisation */\r\n\r\n\r\n#reset-button {\r\n  display: inline-block;\r\n  width: 10rem;\r\n  height: 2rem;\r\n  font-size: 0.8em;\r\n  vertical-align: middle;\r\n  border-radius: 5px;\r\n  box-shadow: 0 0 3px rgb(9, 143, 45);\r\n  background-color: hsl(123, 57%, 15%);\r\n  color: whitesmoke;\r\n  transform: rotate(0deg);\r\n}\r\n\r\n/*-----------\r\ninput[type=checkbox] {\r\n  appearance: none;\r\n}\r\n\r\ninput[type=checkbox]::after {\r\n  color: #eee;\r\n  background: #143b28;\r\n  font-size: 1em;\r\n  border: 0;\r\n  width: 2em;\r\n  height: 2em;\r\n  border-radius: 100%;\r\n  text-align: center;\r\n  content: \"\\276F\";\r\n  transform: rotate(90deg);\r\n}\r\n\r\ninput[type=checkbox]:checked::after {\r\n  content: \"\\276F\";\r\n  color: #eee;\r\n  \r\n  background-color: red;\r\n  font-size: 1em;\r\n  border: 0;\r\n  width: 2em;\r\n  height: 2em;\r\n  border-radius: 100%;\r\n  text-align: center;\r\n  transform: rotate(270deg);\r\n}\r\n-------------*/"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5708,4 +5736,4 @@ requireAll(__webpack_require__("./src/styles sync recursive \\.css$"));
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle9c239b453e4c82dbb245.js.map
+//# sourceMappingURL=bundle50b22fa89892e78e44dd.js.map
