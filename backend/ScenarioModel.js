@@ -6,11 +6,10 @@ class ScenarioModel {
         this.fileName = datas.fileName;
         this.title = datas.title;
         this.description = datas.description;
-        this.origin = datas.origin;
+        this.origin = "Terre Virtuelle",
         this.date = datas.date;
         this.bbox = datas.bbox;
-        this.introduction = datas.introduction;
-        this.questions = datas.questions ? datas.questions : [];
+        this.questions = datas.steps;
         this.imgIndex = 1;
         this.videoIndex = 1
         this.cmd = "scenario"
@@ -79,6 +78,9 @@ class ScenarioModel {
             fs.mkdirSync(this.mainDirectoryName + '/videos');
         }
     }
+
+
+    //this function is now useless cuz there is no awnser. However it was doing smthing with img and video but i don't know what for
 
     saveQuestions() {
         this.questions = this.questions.map((question) => {

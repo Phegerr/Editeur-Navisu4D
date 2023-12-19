@@ -36,45 +36,69 @@ app.listen(PORT_EXT, HOST_NAME, function () {
 
 router.route('/scenarios')
     .get(async function (req, res) {
-        // need change here
         const scenariosData = fs.readdirSync(scenariosFolders).map(folder => {
-            // maybe a filter is better
-            const scenarioFiles = fs.readdirSync(scenariosFolders + '/' + folder).reduce((acumulator, subContent) => {
+            const scenarioFiles = fs.readdirSync(scenariosFolders + '/' + folder).reduce((accumulator, subContent) => {
                 if (path.extname(subContent) === '.json') {
-                    const data = fs.readFileSync(scenariosFolders + '/' + folder + '/' + subContent)
-                    const scenarioObj = new ScenarioModel(JSON.parse(data));
-                    scenarioObj.formatForRes();
-                    scenarioObj.fileName = folder;
-                    acumulator = {...acumulator, ...scenarioObj};
+                    // Ajoutez le nom du fichier sans l'extension à l'accumulateur
+                    accumulator.push(path.basename(subContent, '.json'));
                 }
-                return acumulator;
-            }, {});
+                return accumulator;
+            }, []);
             return scenarioFiles;
         });
-        res.json(scenariosData);
+        res.json(scenariosData.flat());
 
     })
     
     .post((req, res) => {
-        const scenario = new ScenarioModel(req.body)
-        scenario.save(req.body.fileName);
-        return res.json({
-            data: req.body,
-            methode: req.method
+        const dic= req.body
+        
+        
+        AntlrRes(res, dic)
+        .then(result => {
+            // Utilisez le résultat ici
+            const scenario = new ScenarioModel(result);
+            scenario.save(result.fileName);
+            res.end()
+            return res
+        })
+        .catch(error => {
+            // Gérez les erreurs ici
+            res.write(error.message)
+            res.end()
+            return res;
         });
+        
     })
-    .delete(function (req, res) {
-        let scenarioName = req.body.title;
-        let targetDir = scenariosFolders + scenarioName;
+    
+    .put(function (req, res) {
+    });
+
+router.route('/scenarios/:filename')
+    .get( async function (req, res) {
+        const filename = req.params.filename;
+        const targetScenario = path.join(scenariosFolders, filename, filename + '.json'); 
+        if (fs.existsSync(targetScenario)) {
+            const data = fs.readFileSync(targetScenario)
+            const jsonData = JSON.parse(data);
+            res.json(jsonData);
+        } else {
+            res.json('Scenario not found');
+        }
+    
+    })
+
+    .delete(async function (req, res) {
+        const filename = req.params.filename;
+        const targetDir = path.join(scenariosFolders, filename); 
         if (fs.existsSync(targetDir)) {
-            fs.rmSync(targetDir, {recursive: true, force: true});
+            fs.rmSync(targetDir, { recursive: true, force: true });
             return res.json('Scenario deleted');
         } else {
             return res.json('Scenario not found');
         }
-    })
-    .put(function (req, res) {
     });
+
 
 router.route('/scenarioFilesPath')
     .post((req, res) => {
@@ -118,3 +142,9 @@ router.route('/')
       res.json({ data });
 });
 
+async function AntlrRes(res,scenario) {
+    const { giveRes } = await import('./Antlr/antlrFunction.js');
+    return giveRes(res,scenario); 
+  }
+  
+  

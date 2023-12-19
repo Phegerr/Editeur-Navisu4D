@@ -168,13 +168,6 @@ h3,
 .flexImgInp {
   margin-bottom: 20px;
 }
-
-#dropArea {
-  padding: 20px;
-  text-align: center;
-  position: relative;
-}
-
 #fileslbl {
   display: block;
   margin-bottom: 10px;
@@ -186,6 +179,48 @@ h3,
   padding: 10px;
   border: 1px solid white;
   border-radius: 5px;
+}
+.Drag_img {
+  margin-right: 20px; /* Espacement entre les dropAreas, ajustez selon vos besoins */
+}
+
+#dropArea {
+  width: 150px; /* Largeur de la dropArea, ajustez selon vos besoins */
+  height: 150px; /* Hauteur de la dropArea, ajustez selon vos besoins */
+  border: 2px dashed #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+#img-view {
+  width: 100%; 
+  height: 100%; 
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#img-view img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; 
+}
+
+#img-view p {
+  margin: 0;
+}
+
+.area-title {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
 }
 
 /*-----------

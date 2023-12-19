@@ -9,14 +9,14 @@ function addquestion() {
             let newquestion = '<li id="textArea' + ind + '" > <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label><textarea name="txt" cols="10" rows="1"></textarea></li>';
             document.getElementById("asks").insertAdjacentHTML("beforeend", newquestion)
             */
-      let newquestion = '<li id="textArea" > <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label><textarea name="txt" cols="10" rows="1"></textarea></li>';
+      let newquestion = '<li id="textArea" > <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label><textarea name="commentaireArea" cols="10" rows="1"></textarea></li>';
       document.getElementById("asks").insertAdjacentHTML("beforeend", newquestion);
 
 }
 
 
 function insertquestion() {
-      let insertQuestion = '<li id="textArea" > <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label><textarea name="txt" cols="10" rows="1"></textarea></li>';
+      let insertQuestion = '<li id="textArea" > <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label><textarea name="commentaireArea" cols="10" rows="1"></textarea></li>';
       document.getElementById("textArea").insertAdjacentHTML('afterend', insertQuestion);
 }
 
