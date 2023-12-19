@@ -6,15 +6,16 @@ class ScenarioModel {
         this.fileName = datas.fileName;
         this.title = datas.title;
         this.description = datas.description;
-        this.origin = "Terre Virtuelle",
+        this.origin = "Terre Virtuelle";
         this.date = datas.date;
         this.auteur = datas.auteur;
         this.bbox = datas.bbox;
         this.steps = datas.steps;
         this.imgIndex = 1;
-        this.videoIndex = 1
-        this.cmd = "scenario"
-        this.commandes = datas.questions
+        this.videoIndex = 1;
+        this.cmd = "scenario";
+        this.commandes = datas.questions;
+        this.camera = datas.camera;
     }
 
     getScenario() {
@@ -24,10 +25,13 @@ class ScenarioModel {
             description: this.description,
             origin: this.origin,
             date: this.date,
+            auteur: this.auteur,
             bbox: this.bbox,
             introduction: this.introduction,
             steps: this.steps,
-            cmd: this.cmd
+            cmd: this.cmd,
+            commandes: this.questions,
+            camera : this.camera,
         };
     }
 
