@@ -4,6 +4,10 @@ var cors = require('cors');
 const bodyParser = require("body-parser");
 const fs = require('fs');
 const ScenarioModel = require('./ScenarioModel.js');
+const multer = require('multer');
+const upload = multer({
+  dest: './assets/images', // Changer ce chemin selon votre répertoire désiré
+});
 
 // Définition des options CORS (Cross-Origin Resource Sharing)
 const corsOptions = {
@@ -40,6 +44,19 @@ app.use(router);
 app.listen(PORT_EXT, HOST_NAME, function () {
     console.log("Server listen http://" + HOST_NAME + ":" + PORT_EXT);
 });
+// Ajout de la route pour le téléchargement d'images
+router.route('/upload-image')
+  .post(upload.single('imageData'), (req, res) => {
+    // Traitement du fichier image téléchargé
+    const imageFile = req.file; // L'objet file contient des informations sur le fichier image
+    if (imageFile) {
+        console.log('Image File:', imageFile);
+        // Vous pouvez enregistrer le chemin de l'image dans la base de données ou effectuer d'autres opérations nécessaires
+        res.json({ message: 'Image uploaded successfully', imagePath: imageFile.path });
+    } else {
+        res.status(400).json({ message: 'No image file received' });
+    }
+  });
 
 
 router.route('/scenarios')

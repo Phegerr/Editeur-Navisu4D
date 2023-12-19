@@ -34,8 +34,6 @@ save.addEventListener("click", () => {
     questionsList.push(questionInput[i].value);
   }
   
-
-
  
 
 const fileInput = document.getElementById("input-file");
@@ -64,12 +62,25 @@ const fileInput = document.getElementById("input-file");
       lac: lacetInput,
     },
   };
-  requestData.imageData = formData;
-
-
- 
-
-
+// Requête pour le traitement de FormData
+axios.post('http://localhost:8080/upload-image', formData, {
+  headers: {
+    'Content-Type': 'multipart/form-data', // Indique que le contenu est de type FormData
+  },
+})
+  .then(response => {
+    // Gérer la réponse pour le traitement d'images ici
+    console.log('Image Upload Response:', response);
+    return response.data;
+  })
+  .then(data => {
+    console.log('Response from the server:', data);
+  })
+  .catch(error => {
+    // Gérer les erreurs ici
+    console.error('Error:', error);
+  });
+  
 axios.post('http://localhost:8080/scenarios', requestData, {
       headers: {
           'Content-Type': 'application/json',

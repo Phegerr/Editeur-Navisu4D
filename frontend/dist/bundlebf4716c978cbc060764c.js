@@ -234,7 +234,21 @@ save.addEventListener("click", function () {
         lac: lacetInput
       }
     };
-    requestData.imageData = formData;
+    // Requête pour le traitement de FormData
+    axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost:8080/upload-image', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data' // Indique que le contenu est de type FormData
+      }
+    }).then(function (response) {
+      // Gérer la réponse pour le traitement d'images ici
+      console.log('Image Upload Response:', response);
+      return response.data;
+    }).then(function (data) {
+      console.log('Response from the server:', data);
+    })["catch"](function (error) {
+      // Gérer les erreurs ici
+      console.error('Error:', error);
+    });
     axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('http://localhost:8080/scenarios', requestData, {
       headers: {
         'Content-Type': 'application/json'
@@ -5736,4 +5750,4 @@ requireAll(__webpack_require__("./src/styles sync recursive \\.css$"));
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle50b22fa89892e78e44dd.js.map
+//# sourceMappingURL=bundlebf4716c978cbc060764c.js.map
