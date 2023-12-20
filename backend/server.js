@@ -8,6 +8,8 @@ const multer = require('multer');
 const upload = multer({
   dest: './assets/images', // Changer ce chemin selon votre répertoire désiré
 });
+const scenariosFolders = '../ApiRestNaVisu4D/ApiRestNaVisu4D/data/scenarios';
+const path = require('path');
 
 // Définition des options CORS (Cross-Origin Resource Sharing)
 const corsOptions = {
@@ -61,22 +63,17 @@ router.route('/upload-image')
 
 router.route('/scenarios')
     .get(async function (req, res) {
-        // need change here
         const scenariosData = fs.readdirSync(scenariosFolders).map(folder => {
-            // maybe a a filter is better
-            const scenarioFiles = fs.readdirSync(scenariosFolders + '/' + folder).reduce((acumulator, subContent) => {
-                if (subContent.includes('.json')) {
-                    const data = fs.readFileSync(scenariosFolders + '/' + folder + '/' + subContent)
-                    const scenarioObj = new ScenarioModel(JSON.parse(data));
-                    scenarioObj.formatForRes();
-                    scenarioObj.fileName = folder;
-                    acumulator = {...acumulator, ...scenarioObj};
+            const scenarioFiles = fs.readdirSync(scenariosFolders + '/' + folder).reduce((accumulator, subContent) => {
+                if (path.extname(subContent) === '.json') {
+                    // Ajoutez le nom du fichier sans l'extension à l'accumulateur
+                    accumulator.push(path.basename(subContent, '.json'));
                 }
-                return acumulator;
-            }, {});
+                return accumulator;
+            }, []);
             return scenarioFiles;
         });
-        res.json(scenariosData);
+        res.json(scenariosData.flat());
 
     })
     
@@ -102,18 +99,33 @@ router.route('/scenarios')
             return res;
         });
     })
+    
+    .put(function (req, res) {
+    });
 
-    .delete(function (req, res) {
-        let scenarioName = req.body.title;
-        let targetDir = scenariosFolders + scenarioName;
+router.route('/scenarios/:filename')
+    .get( async function (req, res) {
+        const filename = req.params.filename;
+        const targetScenario = path.join(scenariosFolders, filename, filename + '.json'); 
+        if (fs.existsSync(targetScenario)) {
+            const data = fs.readFileSync(targetScenario)
+            const jsonData = JSON.parse(data);
+            res.json(jsonData);
+        } else {
+            res.json('Scenario not found');
+        }
+    
+    })
+
+    .delete(async function (req, res) {
+        const filename = req.params.filename;
+        const targetDir = path.join(scenariosFolders, filename); 
         if (fs.existsSync(targetDir)) {
-            fs.rmSync(targetDir, {recursive: true, force: true});
+            fs.rmSync(targetDir, { recursive: true, force: true });
             return res.json('Scenario deleted');
         } else {
             return res.json('Scenario not found');
         }
-    })
-    .put(function (req, res) {
     });
 
 //
@@ -127,7 +139,7 @@ router.route('/scenarioFilesPath')
     .post((req, res) => {
         const main_directory_name = scenariosFolders + '/' + req.body.fileName;
         if (!fs.existsSync(main_directory_name)) {
-            return res.json('scenario don"t exist');
+            return res.json("scenario don't exist");
         }
         if (!fs.existsSync(main_directory_name + '/' + req.body.fileName + '.pdf')) {
             return res.json('scenario have no exports files');
@@ -153,7 +165,7 @@ router.route('/dlFile')
         if (fs.existsSync(path)) {
             return res.download(path)
         } else {
-            return res.json('scenario don"t exist');
+            return res.json("scenario don't exist");
         }
     })
 

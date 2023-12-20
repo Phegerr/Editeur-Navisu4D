@@ -1,6 +1,6 @@
 # Navisu4D
 
-1- Il faut faire la commande <u>npm run build<u> dans le dossier frontend une fois un git pull car le dossier dist contenant la page html est dans le gitignore.
+1- Il faut faire la commande <u>npm run build<u> dans le dossier frontend une fois un git pull effectué, indispensable car le dossier dist contenant la page html est dans le gitignore.
 
 2- Le fichier html pour avoir la page html est le fichier index.html dans frontend/dist
 

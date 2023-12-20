@@ -40,7 +40,7 @@
                         <li>Enregistrer sous</li>
                     </a>
                     <a href="#">
-                        <li>Modifier</li>
+                        <li id="openButton">Ouvrir</li>
                     </a>
                     <a href="#">
                         <li>Quitter</li>
@@ -53,7 +53,22 @@
         <div class="labelBandeau">Éditeur de scénarios</div>
         <img src="logoTVwhite.png" alt="logo tv">
     </div>
-
+    
+    <!-- Objet Dialog qui apparait lorsque l'on clique sur le bouton ouvrir -->
+    <dialog id="loadDialog">
+        <form>
+          <p>
+            <label for="scenarioList"> Choisissez un scenario: </label>
+            <select id="scenarioList"></select>
+          </p>
+          <div>
+            <button value="cancel" formmethod="dialog">Cancel</button>
+            <button id="loadBtn" value="default">Charger</button>
+            <button id="suppressBtn" value="default">Supprimer</button>
+          </div>
+        </form>
+      </dialog>
+    
     <div class="boxForm">
         <div id="scenario">
 
