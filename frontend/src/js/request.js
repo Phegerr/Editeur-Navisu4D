@@ -179,5 +179,25 @@ function loadScenario(data) {
   document.getElementById("latitudenord").value = data.bbox.n;
   document.getElementById("longitudeouest").value = data.bbox.w;
   document.getElementById("longitudeest").value = data.bbox.e;
-  const questionInput = document.getElementsByName("commentaireArea");
+  const questions = document.getElementById("asks");
+
+
+  if (data.commandes.length > 0){
+    questions.innerHTML = `
+    <li id="etapeInitiale">
+     <label for="CommentaireArea" class="labelQuestionTxt">Commentaire et commandes</label>
+     <textarea name="commentaireArea" id="CommentaireArea" cols="10" rows="1">${data.commandes[0]}</textarea>
+    </li>
+`   ;
+
+    for(let i=1; i<data.commandes.length;i++){
+    let newquestion = `
+    <li id="textArea" >
+      <label for="txtArea" class="labelQuestionTxt">Commentaire et commandes</label>
+      <textarea name="commentaireArea"cols="10" rows="1">${data.commandes[i]} </textarea>
+    </li>`;
+    questions.insertAdjacentHTML("beforeend", newquestion);
+    }
+  }
+
 }

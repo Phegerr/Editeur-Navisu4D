@@ -1,0 +1,65 @@
+{
+    "fileName": "TestRémi",
+    "title": "Test Rémi",
+    "description": "Je fais un test",
+    "origin": "Terre Virtuelle",
+    "date": "2023-12-20",
+    "auteur": "Rémi",
+    "bbox": {
+        "s": "48",
+        "w": "-5",
+        "n": "52",
+        "e": "3"
+    },
+    "steps": [
+        {
+            "comment": "comA",
+            "bbox": {
+                "s": "48.0",
+                "w": "-5.0",
+                "n": "49.0",
+                "e": "2.0"
+            },
+            "move": {
+                "flyTo": {
+                    "ship": {
+                        "lon": "-4.54",
+                        "lat": "48.57",
+                        "alt": "900000.0"
+                    }
+                }
+            }
+        },
+        {
+            "comment": "commentaireB",
+            "bbox": {
+                "s": "48.0",
+                "w": "-5.0",
+                "n": "49.0",
+                "e": "2.0"
+            },
+            "move": {
+                "flyTo": {
+                    "ship": {
+                        "lon": "-4.54",
+                        "lat": "48.57",
+                        "alt": "900000.0"
+                    }
+                }
+            }
+        }
+    ],
+    "cmd": "scenario",
+    "commandes": [
+        "comA*bbox,48.0,-5.0,49.0,2.0*move,flyTo,ship,-4.54,48.57,900000.0",
+        "commentaireB*bbox,48.0,-5.0,49.0,2.0*move,flyTo,ship,-4.54,48.57,900000.0"
+    ],
+    "camera": {
+        "lon": "3",
+        "lat": "52",
+        "alt": "100",
+        "tan": "12",
+        "rou": "120",
+        "lac": "13"
+    }
+}
